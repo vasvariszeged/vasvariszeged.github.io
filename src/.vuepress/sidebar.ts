@@ -4,7 +4,16 @@ export default sidebar({
   "/csharp/": [
     {
       text: "",
-      children: [],
+      children: ["basic/"],
+    },
+  ],
+  "/csharp/basic": [
+    {
+      text: "",
+      children: [
+        "lesson1",
+        "lesson2",
+      ],
     },
   ],
   "/database/": [
@@ -13,6 +22,7 @@ export default sidebar({
       children: [],
     },
   ],
+  
   "/backend/": [
     {
       text: "",
