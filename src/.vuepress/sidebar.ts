@@ -13,6 +13,7 @@ export default sidebar({
       children: [
         "lesson1",
         "lesson2",
+        "lesson3",
       ],
     },
   ],
@@ -29,9 +30,9 @@ export default sidebar({
       children: [
         "lesson1",
         "lesson1p",
-        "lesson2",
-        "javafx/",
-        "lesson4"
+        //"lesson2",
+        //"javafx/",
+        //"lesson4"
       ],
     },
   ],

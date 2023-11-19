@@ -1,6 +1,12 @@
+---
+icon: fa-solid fa-1
+---
+
 # A C# programozási nyelv
 
+:::note Röviden
 __C#__ egy általános célú programozási nyelv. Gyakorlatilag bármilyen alkalmazást elkészíthetsz vele. __C#__ a __.NET__ platformon fut, ami sok mindent magában foglal: egy futtatókörnyezetet - _ami támogatja a programodat_, egy kódbázist - _amire építhetsz_, és egy eszközkészletet - _a programok készítéséhez_.
+:::
 
 A számítógépek csodálatos gépek, amelyek másodpercenként több milliárd utasítás lefuttatására képesek. A számítógépek azonban nem rendelkeznek veleszületett intelligenciával, és nem tudják, hogy melyik utasítás fogja megoldani a problémát. Azok az emberek, akik ezeket a nagy teljesítményű gépeket problémák megoldására tudják használni, a számítástechnika varázslói, akiket programozóknak nevezünk.
 
