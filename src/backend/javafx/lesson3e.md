@@ -33,15 +33,12 @@ A JavaFX-ben egy Eseménynek négy tulajdonsága van:
 - Típus (`Type`)
 - Felhasználva (`consumed`)
 
-:::info A consumed (felhasználva) nevű logikai paramétert általában figyelmen kívül hagyják, de valójában fontos az alkalmazás viselkedése szempontjából. Nézzük meg mindegyiket sorban.
-:::
-
 
 ### Source
 
 JavaFX a `Node`-ot rendeli hozzá az esemény forrásaként a létrehozásnál, ami az esemény okának megfelelően van meghatározva. (_egér, billentyű, művelet stb._).
 
-A Java natívan támogatja az eseményeket az `EventObject` osztállyal. Még mielőtt a __JavaFX__ a saját Target és `Type` attribútumait is rárakná, az esemény alapvető része a forrás. A `Target`, a `Type` és a `Consumed` a __JavaFX__ által bevezetett konstrukciók, de minden eseményt valaminek okoznia kell. Ez a forrás.
+A Java natívan támogatja az eseményeket az `EventObject` osztállyal. Még mielőtt a __JavaFX__ a saját `Target` és `Type` attribútumait is rárakná, az esemény alapvető része a forrás. A `Target`, a `Type` és a `Consumed` a __JavaFX__ által bevezetett konstrukciók, de minden eseményt valaminek ki kell váltania.
 
 Az eseményforrás az az objektum, amely az eseményt okozza. Sokféle állapotváltozás okozhat eseményt:
 
@@ -53,12 +50,6 @@ Az eseményforrás az az objektum, amely az eseményt okozza. Sokféle állapotv
 Még akkor is, ha egy bemeneti eszközről van szó, amelynek állapota megváltozott, a __JavaFX__ hozzárendeli a saját forrását, amely gyakran egy csomópont.
 
 E rugalmasság érdekében az esemény forrása `Object`-ként tárolódik, és a `getSource()` metóduson keresztül érhető el.
-
-Az esemény céljától eltérően, bizonyos speciális esetekben az esemény forrása változhat az esemény végrehajtása során. Az __Eseménytípusok__ című fejezetben beszélek arról, hogyan működhet ez.
-
-??????????????? 
-
-????????
 
 ### Target
 
@@ -97,31 +88,70 @@ Az eseménytípusok az `EventType` osztály által meghatározott __JavaFX__-spe
 
 Egy `EventType` meghatározásakor meg kell adnia az eseményt, amelyre a típust definiálja, és meg kell adnia az esemény nevét. A __JavaFX__ `90` előre definiált eseménytípussal rendelkezik, amelyek az `Event` és az `al-Event` osztályok statikus tagváltozóiként érhetők el.
 
-#### Különbség az AWT-től
+:::note Különbség az AWT-től
+#### 
 
 A __Java__ másik ablakkezelő megoldása az absztrakt ablakkezelő eszközkészlet (`AWT`). Az események típusbiztonságát ebben az eszközkészletben úgy érték el, hogy az eseményeket egész számokként adták meg.
 
 Ez nem tökéletes típusbiztonság, de statikus tagváltozóként lettek definiálva, mint például `MOUSE_CLICKED = 500`, így legalább könnyen lehetett rájuk hivatkozni.
 
 Ha a __JavaFX__ is ezt tette volna, a `MouseEvent.MOUSE_CLICKED` (`AWT import`) és a `MouseEvent.MOUSE_CLICKED` (`JavaFX import`) elég nehezen lenne észrevehető. Ha a statikus változók mögötti számok különbözőek lennének, talán észre sem vennéd, amíg a kódod össze nem omlik, és kézzel kell hibátkeresned.
+:::
 
 ### consumed
 
-Bármelyik ponton ebben a folyamatban, beleértve azt is, mielőtt az esemény elérte volna a célját, az eseményt kezelni lehet, és a folyamat azonnal leáll.
+Bármely ponton ebbe a folyamatban, beleértve azt is, mielőtt az esemény elérte volna a célját, az eseményt kezelni lehet.
 
-Nem lehet eléggé hangsúlyozni, milyen hasznos ez az események vezérlésében egy teljes jelenet során, és milyen gyakran fogod használni az eseményvezérelt fejlesztés során.
+A __JavaFX__ eseménykezelésének alapvető része, hogy az események a `SceneGraph`-on haladnak. Egy `Node` csomóponton bekövetkező esemény a tetején lévő __Window__-tól halad lefelé a csomópontig, majd vissza felfelé.
 
-A __JavaFX__ eseménykezelésének alapvető része, hogy az események a jelenetgrafikonon áthaladnak. Egy levélcsomóponton bekövetkező esemény az adott típusú eseményeket a tetején lévő Windowtól lefelé a csomópontig, majd vissza felfelé indítja el.
-
-Ha egy eseményt a diszpécserlánc végrehajtásának egy részénél fogyasztanak el, akkor az azonnal leáll, és további események nem lőnek ki.
+Az eseményt végrehajtásának egy részénél dolgozzuk fel (`.consume()`), akkor az azonnal leáll, és további események nem hívódnak meg.
 
 Lehetőség van egy esemény leállítására, mielőtt az elérné a célcsomópontot. Ez az eseményszűrők gyakori felhasználási módja.
 
-Az eseményeket a `consume()` metódussal lehet felhasználni. Az `isConsumed()` metódus meghívásával állapítható meg, hogy egy eseményt felhasználtak-e már.
+Az eseményeket a `consume()` metódussal lehet felhasználni.
+
+```java
+package org.vasvari.helloworld;
+
+import javafx.application.Application;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
+
+import java.util.Optional;
+
+public class Main extends Application {
+    @Override
+    public void start(Stage primaryStage) {
+
+        primaryStage.setOnCloseRequest(e -> {
+            Alert confirm = new Alert(AlertType.CONFIRMATION, null, ButtonType.YES, ButtonType.NO);
+            confirm.setTitle("Biztosan ki akar lépni?");
+            confirm.setHeaderText("Biztosan ki akar lépni?");
+
+            Optional<ButtonType> answer = confirm.showAndWait();
+
+            if (answer.isPresent() && answer.get() == ButtonType.NO) {
+                e.consume();
+            }
+        });
+
+        primaryStage.setWidth(400);
+        primaryStage.setHeight(400);
+        primaryStage.show();
+
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+```
 
 ## Eseménykiváltódási fázisok
 
-Amikor egy esemény kiváltódik a __JavaFX__-ben, az a jelenettől (`scene`) a csomópontig (`node`), majd a csomóponttól vissza a jelenetig utazik. 
+Amikor egy esemény kiváltódik a __JavaFX__-ben, az a jelenettől (`Scene`) a csomópontig (`Node`), majd a csomóponttól vissza a jelenetig utazik. 
 
 Ehhez három dologra van szükség:
 
@@ -129,19 +159,17 @@ Ehhez három dologra van szükség:
 2. Azonosítani a `Window`-ot, többablakos alkalmazásokban.
 3. Tudni, milyen útvonalon kell végigmennie a jelenet és a csomópont között.
 
-Ezek a lépések az esemény kiváltásában. Az első lépést __Target Selection__ (_Célcsoport kiválasztásnak_) nevezik. A második és harmadik lépést együtt hajtják végre egy folyamatban, amit __Route Construction__ (_Útvonal építésnek_) neveznek.
+Ezek a lépések az esemény kiváltásában. Az első lépést __Target Selection__-nek (_Cél kiválasztásnak_) nevezik. A második és harmadik lépést együtt hajtják végre egy folyamatban, amit __Route Construction__-nek (_Útvonal építés_) neveznek.
 
 Ezek mindegyikén végigmegyünk, majd befejezésül végigmegyünk az események indításának módján.
 
 ### Cél kiválasztása
 
-A JavaFX a bekövetkezett esemény típusa és az eseményt létrehozó bemeneti eszköz alapján választja ki az esemény célpontját.
-
-Mivel a célpont kiválasztása típusfüggő, az alábbi legördülő listákban részletesebben áttekinthetjük az egyes eseménytípusok célpont-kiválasztását.
+A JavaFX a bekövetkezett esemény típusa és az eseményt létrehozó bemeneti eszköz alapján választja ki az esemény célpontját. Mivel a célpont kiválasztása típusfüggő, az alábbiakban áttekinthetjük az egyes eseménytípusok célpont-kiválasztását.
 
 ### Útvonal építés
 
-Új események esetén - azoknál az eseményeknél, ahol a cél egy csomópont a jelenetben - a cél csomópont létrehoz egy útvonalat önmaga és az `Window` között.
+Új események esetén a cél csomópont létrehoz egy útvonalat Önmaga és az `Window` között.
 
 A logika valami ilyesmit követ:
 
@@ -152,46 +180,21 @@ A logika valami ilyesmit követ:
 - Ez a gyökércsomópont.
 - Használjuk a gyökércsomópontot a `Scene` megszerzéséhez.
 
-Ezután visszaadjuk az útvonalat, amelyet az eredeti `buildEventDispatchChain()` hívás során hoztunk létre a `Target node`-on.
-Az útvonalkészítés után az események készen állnak arra, hogy a `dispatch chain` minden láncszeméről elküldhetők legyenek.
-
 ### Esemény rögzítése
 
 A folyamat most az események lánca, ahol az esemény a lánc első elemenél kezdődik, majd fokozatosan halad végig minden csomóponton, mígnem elérjük a csomópontját.
 
-Itt válik fontossá az esemény szűrők és az eseménykezelők közötti különbség. Ha még nem hallottál az esemény szűrőkről, azokat hozzá lehet adni bármely `EventTargethez` (csomópontok, jelenet, diagramok, feladatok stb.) az `addEventFilter()`-t.
+Itt válik fontossá az esemény szűrők (`EventFilter`) és az eseménykezelők (`EventHandler`) közötti különbség. Ha még nem hallottál az esemény szűrőkről, azokat hozzá lehet adni bármely `EventTargethez` (csomópontok, jelenet, diagramok, feladatok stb.) az `addEventFilter()`-t.
 
-Az esemény szűrők remekül használhatók a gyermek `node`-ok viselkedésének irányítására, mivel a `SceneGraph` bejárása során a szülők először hajtják végre azokat.
-
-:::info Egy csomópontnak rendelkeznie kell a megfelelő típusú esemény szűrővel ahhoz, hogy az adott szűrő működjön.
-:::
+Az esemény szűrők remekül használhatók a `Node`-ok viselkedésének irányítására, mivel a `SceneGraph` bejárása során a szülők először hajtják végre azokat.
 
 ![](/assets/images/vasvari/EventFiltersFiring.webp)
 
-Eseményszűrők bármely `EventTargethez` (csomópontokhoz, feladatokhoz és szolgáltatásokhoz) hozzáadhatók az `addEventFilter()` meghívásával a megfelelő `EventType` és `EventHandler` megadásával.
-
-
-:::info Event Bubbling
-
-Például, ha egy gombra kattintasz, az esemény először a gombon lévő eseménykezelőkön keresztül fut át, majd továbbhalad a gomb szülőelemei felé (pl. a gomb tartalmazó panel vagy ablak). Egyes eseménykezelők csak a cél elemen futnak le, mások viszont tovább is terjednek a szülők felé.
-
-Ez a mechanizmus lehetővé teszi az eseménykezelők hierarchiáját és a felfelé irányuló eseményáramlást, ami rugalmasságot biztosít az események kezelésében a felhasználói felületek fejlesztése során.
-
-:::
-
-### Event Bubbling
-
-Azok az események, amelyeket a célokon regisztráltak, a cél felől az ablak felé haladva kerülnek végrehajtásra, növekvő sorrendben.
-
-Megjegyzés: Ahhoz, hogy az adott kezelő működjön, a csomópontnak rendelkeznie kell a megfelelő típusú eseménykezelővel.
-
-Eseménykezelőket hasonló módon lehet hozzáadni, mint esemény szűrőket, de ehhez az `addEventHandler()` módszert kell használni.
-
-Tekintsük meg, hogyan lehet definiálni az eseményszűrőket és eseménykezelőket.
+Eseményszűrők bármely `EventTargethez` hozzáadhatók az `addEventFilter()` meghívásával a megfelelő `EventType` és `EventHandler` megadásával.
 
 ## Futtatható kód definiálása egy `EventHandler`-ben
 
-Amikor egy eseményre adott választ szeretnénk definiálni, akkor egy EventHandler objektumot kell használnunk. A neve ellenére ugyanazt az objektumot használjuk mind az eseményszűrőkhöz, mind az eseménykezelőkhöz.
+Amikor egy eseményre adott választ szeretnénk definiálni, akkor egy `EventHandler` objektumot kell használnunk.
 
 ### EventHandler létrehozása
 
@@ -200,7 +203,7 @@ Ezt úgy tehetjük meg, hogy az `EventHandler`-t névtelen belső osztályként 
 
 ### EventHandler definiálása
 
-Az `EventHandler` objektum egy objektum egyetlen metódussal, amelyet felül kell írnunk, amikor példányosítjuk. Mivel az `EventHandler` interfész paraméterezett, meg kell adnunk, hogy milyen típusú eseményt kezelünk. Ebben az esetben egy `MouseEventet` fogunk használni.
+Az `EventHandler` egy objektum egyetlen metódussal, amelyet felül kell írnunk, amikor példányosítjuk. Mivel az `EventHandler` interfész paraméterezett, meg kell adnunk, hogy milyen típusú eseményt kezelünk. Ebben az esetben egy `MouseEventet` fogunk használni.
 
 ```java
 EventHandler<MouseEvent> eventHandler = new EventHandler<>() {
@@ -223,7 +226,7 @@ EventHandler<MouseEvent> eventHandler = event -> {
 
 ### Eseményszűrők, eseménykezelők hozzáadása és eltávolítása
 
-Amikor eseménykezelőt definiálunk és adunk hozzá egy csomóponthoz (vagy feladathoz), meghatározzuk, hogy az adott eseménynek milyen típusától szeretnénk, ha a kódunk kiváltódna. Például, ha azt szeretnénk, hogy a kódunk a jelenetünk gyökércsomópontjának bármely egéreseményétől elinduljon, használhatjuk a `MouseEvent.ANY` eseménytípust.
+Amikor eseménykezelőt definiálunk és adunk hozzá egy csomóponthoz, meghatározzuk, hogy az adott eseménynek milyen típusától szeretnénk, ha a kódunk kiváltódna. Például, ha azt szeretnénk, hogy a kódunk a jelenetünk gyökércsomópontjának bármely egéreseményétől elinduljon, használhatjuk a `MouseEvent.ANY` eseménytípust.
 
 Ha egy eseménykezelőt a kód egy későbbi pontján majd el akarunk távolítani, akkor meg kell tartanunk a létrehozott `EventHandler` objektumra való hivatkozást.
 
@@ -234,13 +237,11 @@ EventHandler<MouseEvent> eventHandler = event -> {
     //executable code
 };
 //add the handler
-rootNode.addEventHandler(
-        MouseEvent.ANY, //specify the type of event to listen for
-        eventHandler);
-//later remove the handler
-rootNode.removeEventHandler(
-        MouseEvent.ANY, //this should be the same as defined above
-        eventHandler);
+rootNode.addEventHandler(MouseEvent.ANY, eventHandler);
+
+//later remove the handler 
+//this should be the same as defined above
+rootNode.removeEventHandler(MouseEvent.ANY, eventHandler);
 ```
 
 Ugyanilyen egyszerű az eseményszűrők definiálása és eltávolítása az `addEventFilter()` és `removeEventFilter()` metódusok segítségével.
@@ -250,26 +251,70 @@ Néhány egyszerű dolgot azonban nem szabad elfelejteni:
 - Ha egy eseménykezelőt adtál hozzá, akkor egy eseménykezelőt kell eltávolítanod (nem pedig egy szűrőt), és fordítva.
 - Az esemény típusának ugyanaznak kell lennie, amikor eltávolítod, mint amikor hozzáadod.
 
-### Kényelmi metódusok használata
 
-Néha célszerű kényelmi módszereket használni, például a `setOnMousePressed()` módszert eseménykezelők meghatározásához. Az eseménykezelők szintaxisa:
-
-`setOn` `EventType` `()`
-
-Íme néhány példa:
-
-- setOnMousePressed() (csomópontok - nodes)
-- setOnKeyReleased() (csomópontok - nodes)
-- setOnTaskRunning() (feladatok - tasks)
-- setOnScrollFinished() (csomópontok virtuális folyammal - nodes with virtual flow)
-
-A kényelmi módszerek azért hasznosak, mert ugyanannak a módszernek a meghívásával és egy null hivatkozás átadásával eltávolíthatja a kezelőt anélkül, hogy emlékeznie kellene a hivatkozásra:
+Példa kód:
 
 ```java
-setOnMousePressed(null)
-```
+package org.vasvari.helloworld;
 
-Ezen eseménykezelők biztosan akkor kerülnek végrehajtásra, miután az adott csomóponton lévő ugyanolyan típusú bármely más eseménykezelő lefutott.
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
+public class JavaFX_EventFilter extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        // Címkék és szövegmezők hozzáadása a jelenethez
+        Label label1 = new Label("Nyomja meg a billentyűt ");
+        TextField textfield1 = new TextField();
+        Label label2 = new Label("Esemény szűrés ");
+        TextField textfield2 = new TextField();
+
+        // Elrendezés
+        label1.setTranslateX(100);
+        label1.setTranslateY(100);
+        label2.setTranslateX(100);
+        label2.setTranslateY(150);
+        textfield1.setTranslateX(250);
+        textfield1.setTranslateY(100);
+        textfield2.setTranslateX(250);
+        textfield2.setTranslateY(150);
+
+        // Eseménykezelő objektum létrehozása
+        EventHandler<KeyEvent> eventHandler = new EventHandler<>() {
+            @Override
+            public void handle(KeyEvent event) {
+                textfield2.setText(event.getEventType().toString());
+                textfield1.setText(event.getText());
+                event.consume();
+            }
+        };
+
+        // Esemény szűrő regisztrálása a szövegmezőn generált eseményhez
+        textfield1.addEventFilter(KeyEvent.ANY, eventHandler);
+
+        // Jelenet beállítása
+        Group root = new Group();
+        root.getChildren().addAll(label1, label2, textfield1, textfield2);
+        Scene scene = new Scene(root, 500, 300, Color.WHEAT);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Esemény szűrő hozzáadása");
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+}
+```
 
 ## Eseménytípusok
 
@@ -314,21 +359,13 @@ Ez a funkcionalitás rétegezést biztosít a felhasználói felület felett egy
 
 Mindezekben az esetekben a __JavaFX__ támogatja a következetes felhasználói elvárásokon alapuló műveletek végrehajtását, például egy űrlap elküldését az űrlap utolsó szövegmezőjének Enter billentyűjének megnyomásával, ahelyett, hogy a gombra kellene kattintani. Ily módon ugyanazt a végrehajtható kódot - ugyanazt az `EventHandler`-t - használhatjuk a szövegmező és a `Submit` gomb kezelésére is az alkalmazásunkban.
 
-#### Target kiválasztása
+### Hogyan használjuk az Action Eventeket
 
-Az `Action Event`-ek arra vannak tervezve, hogy több bemeneti módszert is felöleljenek. Ezért az `Action Event`-ek célpontja az a csomópont, amelyre kattintottak vagy amely fókuszban van (_billentyűesemény esetén_).
-
-#### Action Event típusok
-
-Az `ActionEvent` osztálynak csak egy `EventType`-ja van, amely `ACTION` néven található. Amikor egy felhasználó egy gombra kattint, az nincs több állapotban. Egy dolgot csinál - elkötelezi magát egy művelet mellett.
-
-#### Hogyan használjuk az Action Eventeket
-
-Leggyakrabban az `Action Event`-kezelőket a `setOnAction()` kényelmes módszerrel adják hozzá. Ritkán van szükség több funkcionalitásra, ezért más eseménykezelők felülírása kevésbé fontos.
+Leggyakrabban az `Action Event`-kezelőket a `setOnAction()` módszerrel adják hozzá. Ritkán van szükség több funkcionalitásra, ezért más eseménykezelők felülírása kevésbé fontos.
 
 ```java
 textField.setOnAction(event -> {
-    //eevnt action defined with lambda
+    //event action defined with lambda
 });
 ```
 
@@ -341,27 +378,3 @@ Végül ezeket az __FXML__-ben a következő szintaxissal lehet definiálni:
 ```
 
 A __"#"__ szimbólum a `FXMLLoader`-nek azt az utasítást adja, hogy injektálja a `handleTextCommit(ActionEvent event)` metódust a `TextField` `onAction` tulajdonságába. A `handleTextCommit()` metódusnak jelen kell lennie a vezérlőben (a megfelelő `ActionEvent` argumentummal), különben betöltési kivétel (_load exception_) keletkezik.
-
-#### Viselkedése
-
-Fontos megérteni, hogy a műveleti esemény és az azt kiváltó bemeneti esemény nem zárják ki egymást. Tehát, amikor egy műveleti esemény bekövetkezik, a hozzá tartozó billentyűleütés, egérkattintás vagy érintés is bekövetkezik.
-
-Bár nem mindennapi, hogy a jelenet magasabb csomópontjain az `addEventFilter()` segítségével szűrjük az eseményeket, ez mégis lehetséges, ugyanúgy, mint bármely más típusú esemény esetén.
-
-### Worker State Events
-
-Hosszabb-rövidebb ideig futó feladatok könnyen kiszervezhetők olyan munkavégzőknek, mint a "Task"-ok vagy "Service"-ek. Hasznos lehet eseményeket kiváltani ezek előrehaladása során.
-
-### Edit, Modification and Sorting Events
-
-Ezek az események számos felhasználási területet ölelnek fel, de mindannyian olyan összetett felhasználói felület elemeinek frissítéséért felelősek, amelyek nem valósíthatók meg tulajdonságkötéssel.
-
-## Konklúzió
-
-Az események a JavaFX egyik alapvető részét képezik, és szinte minden olyan kód, amely a felhasználói felület frissítéséhez szükséges, az események és tulajdonságkötések segítségével valósítható meg.
-
-Az események közvetítik a felhasználó és az alkalmazás közötti interakciókat. Például, ha egy `TextField` szövegét egy `FilteredList`-hez szeretnénk kötni, akkor az események segítségével vezérelhetjük a felhasználói interakciók által kiváltott frissítéseket.
-
-Még akkor is, ha a felhasználó csak gépel, az események használata a változásfigyelőkhöz képest előnyös lehet, mert az események általában stabilabbak, és kevésbé valószínű, hogy egyetlen billentyűleütés esetén több változás következik be.
-
-Az események emellett kiválóan alkalmazhatók összetett háttérfeladatok és a felhasználói felület közötti kommunikációra. A függő felhasználói felületek elkerülése érdekében érdemes feladatokat használni és azokhoz eseményeket kapcsolni.

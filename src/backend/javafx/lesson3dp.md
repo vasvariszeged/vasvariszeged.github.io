@@ -4,7 +4,7 @@ category:
   - JavaFX
 ---
 
-# FXML Dependency Injection and Controller Initialisation
+# FXML Dependency Injection
 
 Mint minden másban, itt is vannak különböző típusú függőség injektálások, és ha manuálisan szeretnéd irányítani a folyamatot a reflexió használatával, az bonyolulttá válhat. De ez még nem jelenti azt, hogy ezt kötelezően meg kell tenni. Valójában hatalmas funkcionalitásnövekedést érhetünk el a reflexió egyáltalán való használata nélkül is.
 
@@ -51,8 +51,11 @@ Két nappal később a `wishList.java` fájlt kódoljuk, amely egy kívánságli
 Minden új nézetnél, amelynek szüksége van erre a funkcióra, újra be kell másolnunk és be kell illesztenünk a kódot.
 
 
-### Encap
-
-Jobb megközelítés, ha az `FXMLLoader` számára biztosítjuk a szükséges eszközöket, hogy maga töltse fel a vezérlőt (és a nézetet). Őszintén szólva, a hívó osztálynak eleve nem lett volna szabad a felhasználói adatok betöltéséért felelősnek lennie. Ezután tetszőleges módon létrehozhatjuk a felhasználói nézetet, és nem kell másolnunk ezt a kódot.
+### Egységbe zárás felelősége (Encapsulating responsibility)
 
 A jobb megközelítés az, hogy biztosítjuk a `FXMLLoader` számára a szükséges eszközöket, amelyekkel képes a `Controller` (és a `View`) maga kitölteni. Őszintén szólva, a hívó osztálynak eleve nem kellett volna a felelősségét viselnie a felhasználói adatok betöltésére. Ezután létrehozhatjuk a felhasználói nézetet számos módon, és nem kell ezt a kódot másolnunk.
+
+
+Itt létrehoztunk egy `Callback` függvényt. Ez egy végrehajtható kód, amely felépíti a felhasználói nézetünket - ami némileg összetettebbé teszi az alkalmazásunkat. A fontos különbség azonban az, hogy a `shoppingCart.java`-nak már nem kell tudnia a felhasználói adatbázisról. És a `wishList.java` vagy bármely más általunk létrehozott vezérlő sem.
+
+És miután az összes kódot egy `Injection Managerbe` rendeztük, beállíthatjuk az alkalmazás elején, és soha többé nem kell aggódnunk miatta.

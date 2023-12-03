@@ -6,7 +6,7 @@ category:
 
 # JavaFX
 
-A __JavaFX__ egy Java nyelven írt nyílt forráskódú platform és eszközkészlet, amelyet a felhasználói felületek (UI) készítéséhez használnak. A __JavaFX__ célja a modern és interaktív grafikus felhasználói felületek létrehozása Java alkalmazásokhoz, beleértve asztali alkalmazásokat, mobilalkalmazásokat és webalkalmazásokat is.
+A __JavaFX__ egy Java nyelven írt nyílt forráskódú platform és eszközkészlet, amelyet a felhasználói felületek (__UI__) készítéséhez használnak. A __JavaFX__ célja a modern és interaktív grafikus felhasználói felületek létrehozása Java alkalmazásokhoz, beleértve asztali alkalmazásokat, mobilalkalmazásokat és webalkalmazásokat is.
 
 
 A __JavaFX__ a __Java Standard Edition__ (__Java SE__) részeként elérhető, és számos eszközt és funkciót kínál a grafikus felhasználói felületek tervezéséhez és fejlesztéséhez.

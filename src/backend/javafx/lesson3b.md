@@ -35,7 +35,7 @@ Amennyiben nem számítástechnikai háttérrel rendelkezel, a tulajdonságok el
 
 ![](/assets/images/vasvari/WhatIsAProperty.webp)
 
-Néhányuk azonban nem... A JavaFX csak __10__ olvasható tulajdonsággal rendelkezik, amelyek kiterjesztik a `ReadOnlyProperty<T>`-t, de nem kiterjesztik a `WriteableValue<T>`-t.
+Néhányuk azonban nem... A JavaFX csak __10__ olvasható tulajdonsággal rendelkezik, amelyek kiterjesztik a `ReadOnlyProperty<T>`-t, de a `WriteableValue<T>`-t nem.
 
 ### Property létrehozása
 
@@ -218,7 +218,7 @@ Az összes számértékű tulajdonság (`double`, `float`, `int` és `long`) ese
 
 
 :::info lambda
-Természetesen, mivel ezek funkcionális interfészek, lehetőség van rá, hogy __Java 8 vagy annál újabb__ verzióiban azonnal létrehozzuk őket lambda kifejezések segítségével.
+Természetesen, mivel ezek funkcionális interfészek, lehetőség van rá, hogy létrehozzuk őket __lambda__ kifejezések segítségével.
 
 ```java
 magassag.addListener((observable, oldValue, newValue) -> {
@@ -236,8 +236,6 @@ Minden alkalommal, amikor a tulajdonság értéke megváltozik, a `listener` egy
 A kötésekkel az objektumokat összeköthetjük, és olyan kapcsolatot hozunk létre, amelyben az egyik objektum függ legalább egy másik objektumtól. A tulajdonságok natív módon, valamint `Expression` és `Binding` objektumok létrehozásával köthetők.
 
 A `Expression` és a `Binding` megfigyelhető objektumok, amelyek legalább egy másik megfigyelhető objektum értékétől is függnek (_de potenciálisan több is lehet_). Ez lehetővé teszi, hogy több számítást tartalmazó kifejezésláncokat hozzon létre: szuperegyszerű módja a karakterlánc- vagy számkonverziók összekapcsolásának.
-
-Most csak két tulajdonságot fogunk egymáshoz kötni, további osztályok nélkül.
 
 ### Hogyan kössünk össze Property-ket
 
@@ -269,6 +267,57 @@ Ebben az esetben a `targetProperty` követni fogja a `sourceProperty` értékét
 - Ha `null` értéket adunk át argumentumként, a metódus `NullPointerException` kivételt dob.
 - A metódus azonnal másolja a megfigyelt tulajdonság értékét, így az aktuális `targetProperty` értéke elveszik.
 
+
+::: details Egyirányú kötés példakód
+
+```java
+package org.vasvari.helloworld;
+
+import javafx.application.Application;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class OneWayBindingExample extends Application {
+
+    @Override
+    public void start(Stage stage) {
+        // Create StringProperty
+        StringProperty sourceProperty = new SimpleStringProperty("Default Value");
+
+        // Create UI components
+        TextField textField = new TextField();
+        Label label = new Label();
+
+        // Bind the label's text property to the text property of the TextField
+        label.textProperty().bind(textField.textProperty());
+
+        // Layout setup
+        VBox root = new VBox(10);
+        root.setPadding(new Insets(20));
+        root.getChildren().addAll(textField, label);
+
+        // Scene setup
+        Scene scene = new Scene(root, 300, 150);
+
+        // Stage setup
+        stage.setTitle("One-Way Binding Example");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
+```
+:::
+
 ### Kétirányú kötés
 
 Ha két tulajdonságot szeretnénk összekötni úgy, hogy mindig ugyanaz legyen az értékük, akkor használhatjuk a `bindBidirectional()` függvényt, amelynek argumentumaként átadjuk a forrás tulajdonságot.
@@ -290,6 +339,64 @@ A __JavaFX__ nemcsak az alapvető, egyszerű másoláson alapuló kötést támo
 A következő részekben áttekintjük a bonyolultabb kötéseket.
 
 
+::: details Kétirányú kötés példakód
+```java
+package org.vasvari.helloworld;
+
+import javafx.application.Application;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class TwoWayBindingExample extends Application {
+
+    @Override
+    public void start(Stage stage) {
+        // Create StringProperties
+        StringProperty sourceProperty = new SimpleStringProperty("First Value");
+        StringProperty targetProperty = new SimpleStringProperty("Second Value");
+
+        // Bind the properties bidirectionally
+        targetProperty.bindBidirectional(sourceProperty);
+
+        // Create UI components
+        TextField sourceTextField = new TextField();
+        TextField targetTextField = new TextField();
+
+        // Bind the text properties bidirectionally to the StringProperties
+        sourceTextField.textProperty().bindBidirectional(sourceProperty);
+        targetTextField.textProperty().bindBidirectional(targetProperty);
+
+        Label infoLabel = new Label("Type in one field and see the other update!");
+
+        // Layout setup
+        VBox root = new VBox(10);
+        root.setPadding(new Insets(20));
+        root.getChildren().addAll(sourceTextField, targetTextField, infoLabel);
+
+        // Scene setup
+        Scene scene = new Scene(root, 300, 150);
+
+        // Stage setup
+        stage.setTitle("Two-Way Binding Example");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
+```
+:::
+
+
+<!---
 ## Haladó kötési technikák
 
 Három módszer áll rendelkezésre bármely tulajdonság manipulálására és a manipulált érték kötésére:
@@ -525,21 +632,4 @@ public class SquareRootBindingExample {
     }
 }
 ```
-
-## Konklúzió
-
-A __JavaFX__-ben a tulajdonságok lehetnek csak olvashatóak vagy írhatóak, de mindig észlelhetőek. 
-
-Minden tulajdonság megvalósítja a funkcionalitást a
-
-- `javafx.beans.binding`
-- `javafx.beans.value` 
-- és `javafx.beans.property` 
-
-csomagokból.
-
-Minden tulajdonságot meg lehet figyelni `InvalidationListener` vagy `ChangeListener` objektumokkal. Mindkettőt el lehet érni az `addListener()` metódus meghívásával, mert minden tulajdonságnak van `addListener()` metódusa mind az `Invalidation` (_érvénytelenség_), mind a `Change` (_változás_) esetére.
-
-A `property listening` (_tulajdonságfigyelés_) kiterjesztése a `property binding` (_tulajdonságkötés_), amely lehetőséget nyújt a tulajdonságok összekapcsolására, így azok automatikusan frissülnek egy vagy több változás alapján.
-
-Ezen felül a __JavaFX__ támogatást nyújt a kötéseket `Expression` és `Bindings` objektumokon keresztül való kiterjesztéséhez. Ezekhez a legegyszerűbb hozzáférni a `Fluent` és `Bindings API`-kon keresztül. Azonban ha teljesítményre vagy testreszabhatóságra van szükségünk, a `Low-Level API` lehetővé teszi számunkra, hogy teljesen egyedi kötéseket hozzunk létre.
+-->

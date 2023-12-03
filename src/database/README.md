@@ -5,3 +5,6 @@ icon: fa-solid fa-database
 category:
   - SQL alapjai
 ---
+
+
+![](/assets/images/vasvari/uc.webp)

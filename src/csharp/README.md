@@ -5,3 +5,5 @@ icon: fa-solid fa-house-laptop
 category:
   - C# alapjai
 ---
+
+![](/assets/images/vasvari/uc.webp)
