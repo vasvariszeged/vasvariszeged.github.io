@@ -63,20 +63,7 @@ Az `EventObject` kiterjesztése rugalmasságot biztosít a __JavaFX__ számára 
 EventDispatchChain buildEventDispatchChain(EventDispatchChain tail);
 ```
 
-Ez áll a __JavaFX__ eseménykezelési módjának középpontjában. Rengeteg __JavaFX__ objektum bővíti az `EventTarget` interfészt:
-
-- __Nodes, Panes and Controls__ <i class="fa-solid fa-window-maximize"></i>
-- __Transforms__ <i class="fa-solid fa-rotate"></i>
-- __Charts__ <i class="fa-solid fa-chart-line"></i>
-- __Lights and Cameras__ <i class="fa-solid fa-lightbulb"></i>
-- __Mesh data__ <i class="fa-solid fa-layer-group"></i>
-- __Shapes__ <i class="fa-solid fa-shapes"></i>
-- __Skins__ <i class="fa-regular fa-file-code"></i>
-
-Ez lehetővé teszi a __JavaFX__ számára, hogy a felhasználói felület bármely elemén eseményeket indítson, de nekünk, fejlesztőknek is lehetővé teszi, hogy ezeket az eseményeket indítsuk.
-
-Mivel az eseményeket a __JavaFX__ így kezeli, azt is biztosítja, hogy az általunk megadott végrehajtható kódot az `Application` szálon küldjük el. Ez egy hihetetlenül stabil módja az olyan összetett elemek, mint a diagramok és a vizuálisan bonyolult vezérlők frissítésének.
-
+Ez lehetővé teszi a __JavaFX__ számára, hogy a felhasználói felület bármely elemén eseményeket indítson, de akár nekünk, fejlesztőknek is lehetővé teszi, hogy eseményeket indítsunk. Mivel az eseményeket a __JavaFX__ így kezeli, azt is biztosítja, hogy az általunk megadott végrehajtható kódot az `Application` szálon küldjük el.
 
 ### Type
 
@@ -84,19 +71,13 @@ A JavaFX az eseménytípust az esemény eredete (_egér, billentyű, művelet st
 
 Az eseménytípusok az `EventType` osztály által meghatározott __JavaFX__-specifikus paraméterek. Tudomásom szerint a JavaFX két okból definiálja az eseménytípusokat az `EventType` osztály segítségével:
 
-#### Típusbiztonság
+- __Típusbiztonság__
 
 Egy `EventType` meghatározásakor meg kell adnia az eseményt, amelyre a típust definiálja, és meg kell adnia az esemény nevét. A __JavaFX__ `90` előre definiált eseménytípussal rendelkezik, amelyek az `Event` és az `al-Event` osztályok statikus tagváltozóiként érhetők el.
 
-:::note Különbség az AWT-től
-#### 
+- __Elkülönítés az AWT-től__
 
-A __Java__ másik ablakkezelő megoldása az absztrakt ablakkezelő eszközkészlet (`AWT`). Az események típusbiztonságát ebben az eszközkészletben úgy érték el, hogy az eseményeket egész számokként adták meg.
-
-Ez nem tökéletes típusbiztonság, de statikus tagváltozóként lettek definiálva, mint például `MOUSE_CLICKED = 500`, így legalább könnyen lehetett rájuk hivatkozni.
-
-Ha a __JavaFX__ is ezt tette volna, a `MouseEvent.MOUSE_CLICKED` (`AWT import`) és a `MouseEvent.MOUSE_CLICKED` (`JavaFX import`) elég nehezen lenne észrevehető. Ha a statikus változók mögötti számok különbözőek lennének, talán észre sem vennéd, amíg a kódod össze nem omlik, és kézzel kell hibátkeresned.
-:::
+A __Java__ másik ablakkezelő megoldása az absztrakt ablakkezelő eszközkészlet (`AWT`). Az események típusbiztonságát ebben az eszközkészletben úgy érték el, hogy az eseményeket egész számokként adták meg. Ez nem tökéletes típusbiztonság, de statikus tagváltozóként lettek definiálva, mint például `MOUSE_CLICKED = 500`, így legalább könnyen lehetett rájuk hivatkozni. Ha a __JavaFX__ is ezt tette volna, a `MouseEvent.MOUSE_CLICKED` (`AWT import`) és a `MouseEvent.MOUSE_CLICKED` (`JavaFX import`) elég nehezen lenne észrevehető. Ha a statikus változók mögötti számok különbözőek lennének, talán észre sem vennéd, amíg a kódod össze nem omlik, és kézzel kell hibátkeresned.
 
 ### consumed
 
@@ -160,8 +141,6 @@ Ehhez három dologra van szükség:
 3. Tudni, milyen útvonalon kell végigmennie a jelenet és a csomópont között.
 
 Ezek a lépések az esemény kiváltásában. Az első lépést __Target Selection__-nek (_Cél kiválasztásnak_) nevezik. A második és harmadik lépést együtt hajtják végre egy folyamatban, amit __Route Construction__-nek (_Útvonal építés_) neveznek.
-
-Ezek mindegyikén végigmegyünk, majd befejezésül végigmegyünk az események indításának módján.
 
 ### Cél kiválasztása
 

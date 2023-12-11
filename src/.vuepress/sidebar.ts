@@ -4,7 +4,7 @@ export default sidebar({
   "/csharp/": [
     {
       text: "",
-      children: ["basic/"],
+      children: ["basic/", "basic2/", "oop/"],
     },
   ],
   "/csharp/basic": [
@@ -14,8 +14,22 @@ export default sidebar({
         "lesson1",
         "lesson2",
         "lesson3",
-        "lesson4"
+        "lesson4",
+        "lesson5",
+        "lesson6"
       ],
+    },
+  ],
+  "/csharp/basic2": [
+    {
+      text: "",
+      children: [],
+    },
+  ],
+  "/csharp/oop": [
+    {
+      text: "",
+      children: [],
     },
   ],
   "/database/": [
@@ -43,7 +57,7 @@ export default sidebar({
       children: [
         "lesson3",
         "lesson3s",
-        //"lesson3e",
+        "lesson3e",
         //"lesson3b",
         //"lesson3dp"
       ],

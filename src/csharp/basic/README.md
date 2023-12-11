@@ -1,10 +1,10 @@
 ---
-icon: fa-solid fa-a
+icon: fa-solid fa-dungeon
 category:
   - C#
 ---
 
-# Az alapok
+# Az alapok 1. rész
 
 A __C#__ programozás világa előttünk hever, és csak arra vár, hogy felfedezzük. Ebben a részben megkezdjük kalandunkat, és megismerkedünk a __C#__ nyelven történő programozás alapjaival:
 
