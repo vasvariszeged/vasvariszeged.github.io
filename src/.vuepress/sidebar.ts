@@ -16,7 +16,8 @@ export default sidebar({
         "lesson3",
         "lesson4",
         "lesson5",
-        "lesson6"
+        "lesson6",
+        "lesson7"
       ],
     },
   ],
@@ -47,7 +48,7 @@ export default sidebar({
         "lesson1p",
         "lesson2",
         "javafx/",
-        "lesson4"
+        "springboot/"
       ],
     },
   ],
@@ -57,9 +58,20 @@ export default sidebar({
       children: [
         "lesson3",
         "lesson3s",
-        "lesson3e",
-        //"lesson3b",
-        //"lesson3dp"
+        "lesson3e"
+      ],
+    },
+  ],
+  "/backend/springboot/": [
+    {
+      text: "",
+      children: [
+        "lesson4a",
+        "lesson4b",
+        "lesson4c",
+        "lesson4d",
+        "lesson4e",
+        "lesson4f"
       ],
     },
   ],

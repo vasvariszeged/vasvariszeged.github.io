@@ -33,4 +33,4 @@ A Maven egy projektkezelő eszköz, amely segít a Java alkalmazások fejleszté
 
 A Spring Boot egy kiváló keretrendszer a gyors és hatékony Java alkalmazások fejlesztéséhez. Ebben a részben bemutatjuk, hogyan készítsünk RESTful API-kat Spring Boot segítségével. Megismerkedünk a mikroszolgáltatások és a webalkalmazások fejlesztésének alapjaival, és hogyan használjuk a Spring Bootot az alkalmazások építéséhez.
 
-Ez a cikk sorozat segíteni fog abban, hogy megértse a Java Backend programozás alapjait, és felkészítse Önt arra, hogy saját Java alapú szerveroldali alkalmazásokat fejlesszen és működtessen. Kezdjük a Java világának felfedezését, és lépjünk tovább a modern és hatékony alkalmazások fejlesztésének útján.
+Kezdjük a Java világának felfedezését, és lépjünk tovább a modern és hatékony alkalmazások fejlesztésének útján.
