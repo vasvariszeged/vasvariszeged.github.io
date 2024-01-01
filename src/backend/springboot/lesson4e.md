@@ -44,15 +44,15 @@ A Spring Boot keretrendszerben az összes _HTTP_ kérés egy-egy vezérlőosztá
 
 1. A csomagot a gyökércsomag alatt kell létrehozni. A folyamat megkezdéséhez kattintsunk a __org.vasvari.demo__ csomagra a __Project Explorer__-ben, majd jobb egérgombbal kattintva megjelenik egy kontextusmenü. Ebből a menüből válasszuk ki __New | Package__. Az alábbi képernyőképen láthatjuk, hogy hogyan hozzuk létre egy csomagot __controller__ osztályunk számára:
 
-![__1. ábra:__ Új csomag.](/assets/images/vasvari/springboot/controller.png)
+![__1. ábra:__ Új csomag.](/assets/images/vasvari/springboot/controller.webp)
 
 2. Ezután létrehozzuk a vezérlő (__controller__) osztályunkat. Az __org.vasvari.demo.controller__ csomagra kattintsunk jobb egérgombbal és válasszuk ki a menüből a __New | Class__ menüpontot.
 
-![__2. ábra:__ Új osztály.](/assets/images/vasvari/springboot/carcontroller.png)
+![__2. ábra:__ Új osztály.](/assets/images/vasvari/springboot/carcontroller.webp)
 
 3. Most a projekt struktúrájának a következőképpen kell kinéznie:
 
-![__3. ábra:__ Projekt struktúra.](/assets/images/vasvari/springboot/controller_structure.png)
+![__3. ábra:__ Projekt struktúra.](/assets/images/vasvari/springboot/controller_structure.webp)
 
 
 :::info Ha tévedésből rossz csomagban hozzuk létre osztályainkat, könnyedén áthúzhatjuk a fájlokat a Project Explorerben található csomagok között.
@@ -147,7 +147,7 @@ public class Owner {
 
 8. Most, amikor futtatjuk az alkalmazást és a __localhost:8080/cars__ címre navigálunk, minden a tervezett módon kell, hogy működjön és az összes autót __JSON__ formátumban kell megkapnunk az adatbázisból, ahogyan az alábbi képernyőképen láthatjuk:
 
-![__4. ábra:__ A _GET_ kérés a http://localhost:8080/cars címre.](/assets/images/vasvari/springboot/get_cars_request.png)
+![__4. ábra:__ A _GET_ kérés a http://localhost:8080/cars címre.](/assets/images/vasvari/springboot/get_cars_request.webp)
 
 :::note A kimeneti képernyőkép eltérhet.
 Ha a __Chrome__ böngészőt és a __JSON Viewer__ kiegészítőt használjuk akkor az megkönnyíti a __JSON__ kimenet olvashatóságát. A __JSON Viewer__ ingyenesen letölthető a Chrome Web Áruházból.
@@ -182,7 +182,7 @@ spring.data.rest.basePath=/api
 
 Most már hozzáférhetünk a __RESTful__ web szolgáltatáshoz a __localhost:8080/api__ végponton keresztül. A szolgáltatás gyökér végpontjának (__/api__) meghívásával visszaadja az elérhető erőforrásokat. A __Spring Data REST__ __JSON__ adatokat ad vissza a __Hypertext Application Language__ (_HAL_) formátumban. A __HAL__ formátum egy konvenciókészletet biztosít a hiperhivatkozások __JSON__-ban történő kifejezésére és megkönnyíti a __RESTful__ webszolgáltatás használatát a _frontend_ fejlesztők számára:
 
-![__5. ábra:__ Spring Boot Data REST erőforrásai.](/assets/images/vasvari/springboot/spring_data_rest1.png)
+![__5. ábra:__ Spring Boot Data REST erőforrásai.](/assets/images/vasvari/springboot/spring_data_rest1.webp)
 
 Láthatjuk, hogy vannak hivatkozások a gépjármű- és tulajdonos-entitás szolgáltatásokra. A __Spring Data REST__ szolgáltatás elérési útja az entitás osztály nevéből származik. A név ezután kisbetűssé válik. Például a gépjármű entitás szolgáltatás elérési útja a `cars` lesz. A `profile` hivatkozás a __Spring Data REST__ által generált és alkalmazás-specifikus metaadatokat tartalmaz. Ha más elérési útnevet szeretnénk használni, a következő példában látható módon használhatjuk a `@RepositoryRestResource` annotációt a __repository__ osztályában:
 
@@ -201,7 +201,7 @@ public interface CarRepository extends CrudRepository<Car,Long> {
 
 Most, ha megnyitjuk a __localhost:8080/api__ végpontot, láthatjuk, hogy a végpont __/cars__-ról __/vehicles__-re változott.
 
-![__6. ábra:__ `/car`-ról `/vehicles`-re.](/assets/images/vasvari/springboot/spring_data_rest2.png)
+![__6. ábra:__ `/car`-ról `/vehicles`-re.](/assets/images/vasvari/springboot/spring_data_rest2.webp)
 
 
 
@@ -213,7 +213,7 @@ Most pedig részletesebben megvizsgáljuk a szolgáltatásokat. Több eszköz is
 
 Ha a __/cars__ végpontra (http://localhost:8080/api/cars) a __GET__ kérést küldünk, akkor az összes autót lista formájában kapjuk meg, ahogy az a következő képernyőképen látható:
 
-![__7. ábra:__ Autók lekérése.](/assets/images/vasvari/springboot/spring_data_rest3.png)
+![__7. ábra:__ Autók lekérése.](/assets/images/vasvari/springboot/spring_data_rest3.webp)
 
 A __JSON__ válaszból látható, hogy van egy autók tömb és mindegyik autó tartalmaz autóspecifikus adatokat. Az összes autónak van egy `_links` attribútuma is, amely hivatkozások gyűjteménye és ezekkel a hivatkozásokkal hozzáférhetünk az autóhoz vagy az autó tulajdonosához. 
 
@@ -236,7 +236,7 @@ Most megnézzük, hogy hogyan törölhetünk egy autót az adatbázisból a __RE
 
 A következő képernyőkép azt mutatja, hogy __Postman__ asztali alkalmazás segítségével hogyan törölhetünk. A __Postman__-ben ki kell választanunk a megfelelő _HTTP_-metódust a legördülő listából, meg kell adnunk a kérés __URL__-címét, majd a __Send__ gombra kell kattintanunk:
 
-![__8. ábra:__ DELETE kérés az autó törlésére.](/assets/images/vasvari/springboot/postman1.png)
+![__8. ábra:__ DELETE kérés az autó törlésére.](/assets/images/vasvari/springboot/postman1.webp)
 
 A __Postman__-ben látni fogjuk a válasz státuszát, amely __200 OK__. A sikeres __DELETE__ kérés után azt is észrevehetjük, hogy most már csak két autó van az adatbázisban, ha __GET__ kérést küldünk a http://localhost:8080/api/cars/ végpontra. 
 
@@ -261,19 +261,19 @@ Itt van egy autó példa:
 
 Ha a __Postman__ alkalmazásban a __Body__ fülre kattintunk és ott kiválasztjuk a __raw__ lehetőséget, akkor a __Body__ fül alatt begépelhetjük az új autót (_JSON formátumban_). Válasszuk ki a lenyíló menüből a __JSON__ lehetőséget. 
 
-![__9. ábra:__ JSON formátum.](/assets/images/vasvari/springboot/postman2_0.png)
+![__9. ábra:__ JSON formátum.](/assets/images/vasvari/springboot/postman2_0.webp)
 
 :::note A Headers beállítása, ha nem történne meg automatikusan...
 
 A fejlécet is be kell állítanunk a __Postman__ __Headers__ fülére kattintva. A __Postman__ automatikusan hozzáad néhány fejlécet a kérés kiválasztása alapján. Ellenőrizzük, hogy a __Content-Type__ fejléc szerepel-e a listában és az értéke helyes-e (__application/json__). Ha nem létezik, akkor kézzel kell hozzáadnunk. Az automatikusan hozzáadott fejlécek alapértelmezés szerint elrejtve lesznek, de ezeket a _hidden_ gombra kattintva láthatóvá tehetjük. 
 
-![__10. ábra:__ POST kérés fejlécei.](/assets/images/vasvari/springboot/postman2_1.png)
+![__10. ábra:__ POST kérés fejlécei.](/assets/images/vasvari/springboot/postman2_1.webp)
 
 :::
 
 A válasz egy újonnan létrehozott autó objektumot küld vissza és a státusz kódja __201 Created__ lesz, ha minden rendben ment. 
 
-![__11. ábra:__ POST kérés az új autó hozzáadásához.](/assets/images/vasvari/springboot/postman2.png)
+![__11. ábra:__ POST kérés az új autó hozzáadásához.](/assets/images/vasvari/springboot/postman2.webp)
 
 Most, ha újra __GET__ kérést küldünk a http://localhost:8080/api/cars útvonalra, látni fogjuk, hogy az új autó létezik az adatbázisban.
 
@@ -293,18 +293,18 @@ Szerkesszük meg az előző példában létrehozott autót és változtassuk meg
 
 A __Postman__ kérését a következő képernyőképen láthatjuk (__megjegyzés:__ _a fejlécet a POST példájához hasonlóan állítottuk be és az autó azonosítóját használjuk az URL-ben_):
 
-![__12. ábra:__ PATCH kérés a meglévő autó frissítésére.](/assets/images/vasvari/springboot/postman3.png)
+![__12. ábra:__ PATCH kérés a meglévő autó frissítésére.](/assets/images/vasvari/springboot/postman3.webp)
 
 Ha a frissítés sikerült, a válasz státusz kódja __200 OK__ lesz. Ha most lekérjük a frissített autót egy __GET__ kérés segítségével, látni fogjuk, hogy a szín frissítésre került.
 
 Következő lépésként egy tulajdonost fogunk hozzárendelni az új autóhoz, amit éppen létrehoztunk. Ehhez használjuk a __PUT__ metódust és a http://localhost:8080/api/cars/{id}/owner elérési utat.
 Ebben a példában az új autó azonosítója __4__, tehát a hivatkozásunk így néz ki: http://localhost:8080/api/cars/4/owner. __Body__ tartalma most egy tulajdonoshoz lesz kapcsolva, például http://localhost:8080/api/owners/1.
 
-![__13. ábra:__ PUT kérés az Owner frissítésére.](/assets/images/vasvari/springboot/postman4.png)
+![__13. ábra:__ PUT kérés az Owner frissítésére.](/assets/images/vasvari/springboot/postman4.webp)
 
 A fejlécek __Content-Type__ értéke ebben az esetben __text/uri-list__ kell, hogy legyen. Ezután kattintsunk a __Send__ gombra:
 
-![__14. ábra:__ Content-Type beállítása.](/assets/images/vasvari/springboot/postman5.png)
+![__14. ábra:__ Content-Type beállítása.](/assets/images/vasvari/springboot/postman5.webp)
 
 
 :::danger Ha nem tudnánk módosítani az automatikusan hozzáadott fejlécet, akkor letilthatjuk azt a jelölőnégyzet segítségével. Ezután adjunk hozzá egy újat, ahogy a fenti képen látható.
@@ -335,7 +335,7 @@ public interface CarRepository extends CrudRepository<Car,Long> {
 
 Most, ha __GET__ kérést küldünk a http://localhost:8080/api/cars útvonalra, láthatjuk, hogy van egy új végpont, ami a __/search__ nevet viseli. A http://localhost:8080/api/cars/search útvonal hívása az alábbi választ adja vissza:
 
-![__15. ábra:__ REST lekérdezések.](/assets/images/vasvari/springboot/spring_data_rest4.png)
+![__15. ábra:__ REST lekérdezések.](/assets/images/vasvari/springboot/spring_data_rest4.webp)
 
 A válaszból látható, hogy mindkét lekérdezés most elérhető a szolgáltatásunkban. A következő __URL__ bemutatja, hogyan lehet lekérdezni az autókat márkájuk szerint: http://localhost:8080/api/cars/search/findByBrand?brand=Ford. Az eredmény csak a __Ford__ márkájú autókat fogja tartalmazni.
 
@@ -398,7 +398,7 @@ springdoc.swagger-ui.enabled=true
 
 Most már készen állunk a programunk futtatására. Amikor az alkalmazás fut, navigáljunk a http://localhost:8080/swagger-ui.html oldalra és ott látni fogja a __Swagger UI__ által megjelenített dokumentációt, ahogyan az alábbi képernyőképen látható:
 
-![__16. ábra:__ Car RESTful API dokumentációja.](/assets/images/vasvari/springboot/swagger.png)
+![__16. ábra:__ Car RESTful API dokumentációja.](/assets/images/vasvari/springboot/swagger.webp)
 
 
 Láthatjuk az összes elérhető végpontot a __RESTful API__-ban. Ha bármelyik végpontot megnyitjuk, akár ki is próbálhatjuk azokat a __Try it out__ gomb megnyomásával. A dokumentáció elérhető ___JSON___ formátumban is a http://localhost:8080/api-docs címen.

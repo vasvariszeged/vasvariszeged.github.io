@@ -48,18 +48,18 @@ A második pedig a teszteléshez:
 
 Amikor elindítjuk az alkalmazást, a konzolon láthatjuk, hogy a __Spring Security__ létrehozott egy felhasználót __user__ felhasználónévvel. A felhasználó jelszava látható a konzol kimenetén:
 
-![__1. ábra:__ Spring Security bekapcsolva.](/assets/images/vasvari/springboot/security1.png)
+![__1. ábra:__ Spring Security bekapcsolva.](/assets/images/vasvari/springboot/security1.webp)
 
 :::info Ha nincs jelszó a konzolon, próbáljuk meg újraindítani a projektet a konzol piros Stop gombjának megnyomásával és futtassuk újra.
 :::
 
 Most, ha egy __GET__ kérést küldünk a __REST API__ végpontjára, látni fogjuk, hogy az védve van. Nyissuk meg a webböngészőnket és lépjünk a http://localhost:8080/api címre. Át leszünk irányítva a __Spring Security__ alapértelmezett bejelentkezési oldalára:
 
-![__2. ábra:__ Védett REST API.](/assets/images/vasvari/springboot/security2.png)
+![__2. ábra:__ Védett REST API.](/assets/images/vasvari/springboot/security2.webp)
 
 Ahhoz, hogy sikeres __GET__-kérést tudjunk végrehajtani, hitelesítenünk kell a __RESTful API__-nkat. A felhasználónév mezőbe írjuk be a __user__-t, a Jelszó mezőbe pedig másoljuk ki a konzolon generált jelszót. A hitelesítéssel láthatjuk, hogy a válasz tartalmazza az __API__-erőforrásainkat:
 
-![__3. ábra:__ Alapszintű (basic) hitelesítés.](/assets/images/vasvari/springboot/security3.png)
+![__3. ábra:__ Alapszintű (basic) hitelesítés.](/assets/images/vasvari/springboot/security3.webp)
 
 A viselkedés konfigurálásához létre kell hoznunk egy új konfigurációs osztályt a __Spring Security__ számára. A konfigurációs fájl segítségével meghatározhatjuk, mely __URL__-ek vagy __URL-minták__ érhetőek el illetve, hogy milyen felhasználók vagy szerepkörök számára. Emellett meghatározhatjuk az azonosítási mechanizmust, a bejelentkezési folyamatot, a munkamenetkezelést, stb.
 
@@ -356,12 +356,12 @@ A `$2a` a hashelési algoritmus verzióját reprezentálja, a `$10` pedig az alg
 
 9. Az alkalmazás futtatása után látni fogjuk, hogy az adatbázisban van egy __app_user__ tábla és hogy két felhasználói rekord van elmentve hashelt jelszavakkal, ahogy azt a következő képernyőkép mutatja:
 
-![__4. ábra:__ Felhasználók.](/assets/images/vasvari/springboot/security4.png)
+![__4. ábra:__ Felhasználók.](/assets/images/vasvari/springboot/security4.webp)
 
 10. Indítsuk újra az alkalmazásunkat és egy __401 Unauthorized__ hibát kell kapnunk, ha megpróbálunk egy __GET__ kérést küldeni a http://localhost:8080/api útvonalra hitelesítés nélkül. Sikeres kérés küldéséhez hitelesítés szükséges. A különbség a korábbi példához képest az, hogy most az adatbázisban tárolt felhasználókat használjuk a hitelesítéshez.
 Bejelentkezhetünk az __/api__ végpontra a böngészőből, vagy használhatjuk a __Postman__-t és az alapszintű (__basic__) hitelesítést.
 
-![__5. ábra:__ GET kérés authentikációval.](/assets/images/vasvari/springboot/security5.png)
+![__5. ábra:__ GET kérés authentikációval.](/assets/images/vasvari/springboot/security5.webp)
 
 11. Láthatjuk, hogy jelenleg az __api/appUsers__ végpont hívásával le kérhetjük a felhasználókat a __RESTful__ webszolgáltatásunkból, amit szeretnénk elkerülni. Ahogyan azt már tárgyaltuk a __Spring Data REST__ alapértelmezetten létrehoz egy __RESTful__ webszolgáltatást az összes nyilvános __repository__-ból. A `@RepositoryRestResource` annotáció `exported` peraméterét beállítjuk `false` értékre, ami azt jelenti, hogy az adott `repository`-t nem __REST__-erőforrásként jelenítjük meg:
 
@@ -383,7 +383,7 @@ public interface AppUserRepository extends CrudRepository<AppUser, Long> {
 
 12. Ha újraindítjuk az alkalmazást és küldünk egy __GET__ kérést a __/api__ végpontra, látni fogjuk, hogy az __/appUsers__ végpont már nem látható.
 
-![__6. ábra:__ __/appUsers__ végpont már nem látható.](/assets/images/vasvari/springboot/security6.png)
+![__6. ábra:__ __/appUsers__ végpont már nem látható.](/assets/images/vasvari/springboot/security6.webp)
 
 Következő lépésként elkezdjük megvalósítani az azonosítást egy __JSON Web Token__ (JWT) segítségével.
 
@@ -391,7 +391,7 @@ Következő lépésként elkezdjük megvalósítani az azonosítást egy __JSON 
 
 Az eddigiekben azt tárgyaltuk, hogy hogyan lehet alapszintű hitelesítést használni egy __RESTful__ webszolgáltatásnál. Viszont az alapvető hitelesítés nem biztosít módot a tokenek és munkamenetek kezelésére. 
 
-![__7. ábra:__ A JWT.](/assets/images/vasvari/springboot/security7.png)
+![__7. ábra:__ A JWT.](/assets/images/vasvari/springboot/security7.webp)
 
 Amikor egy felhasználó bejelentkezik, a hitelesítő adatokat minden egyes kéréssel együtt elküldi, ami munkamenetkezelési problémákat és potenciális biztonsági kockázatokat okozhat ezért ehelyett __JSON Web Token__ (_JWT_) hitelesítést fogunk használni (https://jwt.io/).
 
@@ -401,7 +401,7 @@ A __JWT__-ket a __RESTful API__-kban gyakran használják hitelesítési és jog
 
 A __JWT__ három különböző részt tartalmaz, amelyek pontokkal vannak elválasztva: __xxxxx.yyyyy.zzzzz__. Ezek a részek a következőképpen vannak felbontva:
 
-![__8. ábra:__ JWT felépítése.](/assets/images/vasvari/springboot/security8.png)
+![__8. ábra:__ JWT felépítése.](/assets/images/vasvari/springboot/security8.webp)
 
 - Az első rész (__xxxxx__) a __fejléc__, amely meghatározza a token típusát és a hashelési algoritmust.
 - A második rész (__yyyyy__) a __payload__, amely általában az azonosítás esetén felhasználói információkat tartalmaz.
@@ -418,7 +418,7 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
 A következő diagram bemutatja az authentikációs folyamatát a __JWT__-nek:
 
-![__9. ábra:__ JWT authentikációs folyamat.](/assets/images/vasvari/springboot/security9.png)
+![__9. ábra:__ JWT authentikációs folyamat.](/assets/images/vasvari/springboot/security9.webp)
 
 A sikeres azonosítás után a kliens által küldött kéréseknek mindig tartalmazniuk kell azt a __JWT__-t, amelyet az azonosítás során kapott.
 
@@ -538,7 +538,7 @@ public class JwtService {
 
 3. Következő lépésként egy új osztályt adunk hozzá az azonosításhoz szükséges hitelesítő adatok tárolásához. Itt használhatunk egy __Java rekordot__, amelyet a _Java 14_-ben vezettek be. A rekord jó választás, ha olyan osztályra van szükségünk, amely csak adatokat tárol. Hozzunk létre egy új rekordot __New | Java Class | Record__, `AccountCredentials` néven a __org.vasvari.demo.entity__ csomagban:
 
-![__9. ábra:__ Record létrehozása.](/assets/images/vasvari/springboot/security10.png)
+![__9. ábra:__ Record létrehozása.](/assets/images/vasvari/springboot/security10.webp)
 
 A rekordnak két mezője van: felhasználónév és jelszó. Itt van a rekord forráskódja. Mint láthatod, nem kell gettereket és settereket írnunk, amikor ezt használjuk:
 
@@ -752,7 +752,7 @@ public class SecurityConfig {
 
     Látnunk kell egy __Authorization__ fejlécet a válaszban, amely tartalmazza az aláírt __JWT__-t, hasonlóan ahhoz, amit a következő képernyőképen láthatunk:
 
-![__11. ábra:__ Bejelentkezési helyes authentikációs adatokkal.](/assets/images/vasvari/springboot/security11.png)
+![__11. ábra:__ Bejelentkezési helyes authentikációs adatokkal.](/assets/images/vasvari/springboot/security11.webp)
 
 Tesztelhetjük a bejelentkezést a helytelen jelszó megadásával és megfigyelhetjük, hogy a válasz nem tartalmazza az __Authorization__ fejlécet.
 
@@ -887,15 +887,15 @@ public class SecurityConfig {
 
     Sikeres bejelentkezést követően a többi __RESTful__ szolgáltatási végpontot a bejelentkezéskor kapott __JWT__ segítségével hívhatjuk meg az __Authorization__ fejléc használatával.
 
-    ![__12. ábra:__ Authorization fejléc.](/assets/images/vasvari/springboot/security11header.png)
+    ![__12. ábra:__ Authorization fejléc.](/assets/images/vasvari/springboot/security11header.webp)
 
     Másoljuk ki a __token__-t a bejelentkezés válaszából (__Bearer__ előtag nélkül), majd addjuk hozzá az __Authorization__ fejlécet. 
 
-    ![__13. ábra:__ Authorization fejléc hozzáadása.](/assets/images/vasvari/springboot/security12.png)
+    ![__13. ábra:__ Authorization fejléc hozzáadása.](/assets/images/vasvari/springboot/security12.webp)
     
     Az alábbi képernyőképen látható példa mutatja be, ahol egy __GET__ kérés történik a __/cars__ végpont felé:
 
-    ![__14. ábra:__ Sikeres __GET__ kérés a /cars végpontra.](/assets/images/vasvari/springboot/security13.png)
+    ![__14. ábra:__ Sikeres __GET__ kérés a /cars végpontra.](/assets/images/vasvari/springboot/security13.webp)
 
 
 :::warning Minden alkalommal, amikor az alkalmazást újraindítjuk újra be kell azonosítani magunkat.
@@ -1010,7 +1010,7 @@ public class SecurityConfig {
 
 3. Innentől kezdve, ha helytelen hitelesítő adatokkal próbálkozunk, akkor válaszként egy __401 Unauthorized__ hibát kapunk. A hibaüzenetet a __Body__ részében láthatjuk, mely az alábbi képernyőképen látható:
 
-![__15. ábra:__ Error: Bad credentials.](/assets/images/vasvari/springboot/security14.png)
+![__15. ábra:__ Error: Bad credentials.](/assets/images/vasvari/springboot/security14.webp)
 
 
 ### CORS szűrő hozzáadása

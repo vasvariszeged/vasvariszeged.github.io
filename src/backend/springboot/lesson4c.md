@@ -27,7 +27,7 @@ A __Dependency Injection__-ben háromféle osztály létezik:
 - Az injektor átadja a függőséget (__a szolgáltatást - service__) a függő osztálynak (__a kliens - client__).
 
 
-![__1. ábra:__ A Dependency Injection összekapcsolja az osztályokat.](/assets/images/vasvari/springboot/dependency_injection.png)
+![__1. ábra:__ A Dependency Injection összekapcsolja az osztályokat.](/assets/images/vasvari/springboot/dependency_injection.webp)
 
 Nézzünk meg egy egyszerűsített példát a __Dependency Injection__ használatára Java kóddal. A következő kódban nincs __Dependency Injection__, mert a `Car` kliens (__client__) osztály egy objektumot hoz létre a szolgáltatás (__service__) osztályból :
 

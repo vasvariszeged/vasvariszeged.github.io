@@ -45,11 +45,11 @@ Most pedig a __H2__ adatbázist fogjuk használni (https://www.h2database.com/),
 </dependency>
 ```
 
-![__1. ábra:__ Miután frissítettük a `pom.xml` fájlt, frissítsük a függőségeket az __IntelliJ IDEA__-ban. (__Ctrl+Shift+O__)](/assets/images/vasvari/springboot/maven1.png)
+![__1. ábra:__ Miután frissítettük a `pom.xml` fájlt, frissítsük a függőségeket az __IntelliJ IDEA__-ban. (__Ctrl+Shift+O__)](/assets/images/vasvari/springboot/maven1.webp)
 
 vagy
 
-![__2. ábra:__ Amennyiben megjelenik a `pom.xml`-ben.](/assets/images/vasvari/springboot/maven2.png)
+![__2. ábra:__ Amennyiben megjelenik a `pom.xml`-ben.](/assets/images/vasvari/springboot/maven2.webp)
 
 A projekt függőségeit a __Project Explorer__-en belül az __External Libraries__ találhatjuk meg. Most már látnunk kell ott a _spring-boot-starter-data-jpa_ és a _h2_ függőségeket.
 
@@ -61,19 +61,19 @@ Nézzük meg a következő lépéseket az entitás osztályok létrehozásához:
 
 2. Ebből a menüből válasszuk ki __New__ | __Package__. Az alábbi képernyőképen láthatjuk, hogy hogyan hozzunk létre egy csomagot entitás osztályok számára:
 
-![__3. ábra:__ Új csomag létrehozása](/assets/images/vasvari/springboot/package.png)
+![__3. ábra:__ Új csomag létrehozása](/assets/images/vasvari/springboot/package.webp)
 
 3. A csomagunkat __org.vasvari.demo.entity__-nek fogjuk nevezni:
 
-![__4. ábra:__ org.vasvari.demo.entity](/assets/images/vasvari/springboot/package_name.png)
+![__4. ábra:__ org.vasvari.demo.entity](/assets/images/vasvari/springboot/package_name.webp)
 
 4. Ezután létrehozzuk az entitás osztályunkat. Az __org.vasvari.demo.entity__ csomagra kattintsunk jobb egérgombbal és válasszuk ki a menüből a __New__ | __Class__ menüpontot.
 
-![__5. ábra:__ Új osztály létrehozása](/assets/images/vasvari/springboot/class.png)
+![__5. ábra:__ Új osztály létrehozása](/assets/images/vasvari/springboot/class.webp)
 
 5. Mivel egy autós adatbázist fogunk létrehozni, az entitás osztály neve __Car__ lesz. Írjuk be a _Name_ mezőbe a __Car__ szót, majd nyomjuk meg az _Enter_ gombot, ahogy az a következő képernyőképen látható:
 
-![__6. ábra:__ Car](/assets/images/vasvari/springboot/class_name.png)
+![__6. ábra:__ Car](/assets/images/vasvari/springboot/class_name.webp)
 
 6. Automatikusan megnyílik a létrehozott __Car__ osztály a szerkesztőben. Annotáljuk az `@Entity` annotációval. Az `@Entity` annotációt a `jakarta.persistence` csomagból importáljuk:
 
@@ -92,7 +92,7 @@ public class Car {
 
 Azért, hogy a jövőben elkerüljük az egyesével történő importálást, rendelkezünk egy beállítási lehetőséggel, melyet aktiválnunk kell. A beállításoknál a keresőbe írjuk be, hogy "__auto import__" és megjelenik számunkra az "__Add unambiguous imports on the fly__" opciót.
 
-![__7. ábra:__ Add unambiguous imports on the fly](/assets/images/vasvari/springboot/auto_import.png)
+![__7. ábra:__ Add unambiguous imports on the fly](/assets/images/vasvari/springboot/auto_import.webp)
 :::
 
 7. Ezután hozzá kell adnunk néhány mezőt az osztályunkhoz. Az entitás osztály mezőit, az adatbázis tábla oszlopaihoz rendeljük. Az entitás osztálynak tartalmaznia kell egy egyedi azonosítót is, amelyet elsődleges kulcsként használunk az adatbázisban:
@@ -228,7 +228,7 @@ spring.jpa.show-sql=true
 
 10. Most a __Car__ tábla létrejön az adatbázisban, amikor futtatjuk az alkalmazást. Ezen a ponton láthatjuk a konzolon a tábla létrehozására vonatkozó utasításokat:
 
-![__8. ábra:__ Car tábla SQL utasításai](/assets/images/vasvari/springboot/car_jpa.png)
+![__8. ábra:__ Car tábla SQL utasításai](/assets/images/vasvari/springboot/car_jpa.webp)
 
 :::warning Ha a spring.datasource.url nincs definiálva az alkalmazásban.
 
@@ -248,7 +248,7 @@ spring.h2.console.path=/h2-console
 
 A __H2__-konzolhoz úgy férhetünk hozzá, hogy elindítjuk az alkalmazást és a webböngészőnk segítségével a __localhost:8080/h2-console__ címre navigálunk. Használjuk a __jdbc:h2:mem:testdb__ JDBC URL-t és üresen hagyjuk a _Password_ mezőt a _Login_ ablakban. Nyomjuk meg a _Connect_ gombot a konzolba való bejelentkezéshez, ahogy azt a következő képernyőképen láthatjuk:
 
-![__9. ábra:__ H2 console belépés](/assets/images/vasvari/springboot/h2_1.png)
+![__9. ábra:__ H2 console belépés](/assets/images/vasvari/springboot/h2_1.webp)
 
 
 :::warning A H2 adatbázisunk felhasználónevét és jelszavát az application.properties fájlban a következő beállításokkal is megváltoztathatjuk: spring.datasource.username és spring.datasource.password.
@@ -256,7 +256,7 @@ A __H2__-konzolhoz úgy férhetünk hozzá, hogy elindítjuk az alkalmazást és
 
 Most már láthatjuk a __Car__ táblát az adatbázisban. Észrevehetjük, hogy bizonyos szavak között alsókötőjel található. Az alsókötőjel oka az attribútum (`registrationNumber`) kisbetűvel kezdődő elnevezési konvenciója, az úgynevezett _camel case_ elnevezés.
 
-![__10. ábra:__ H2 console](/assets/images/vasvari/springboot/h2_2.png)
+![__10. ábra:__ H2 console](/assets/images/vasvari/springboot/h2_2.webp)
 
 Most létrehoztuk az első entitás osztályunkat és megtanultuk, hogyan generálunk a __JPA__-val egy adatbázis táblát az entitás osztályból. Ezután létrehozunk egy `repository` osztályt, amely __CRUD__ műveleteket biztosítja.
 
@@ -302,7 +302,7 @@ Ha a metódus csak egy elemet ad vissza, akkor az `Optional<T>` lesz a visszaado
 
 A `CarRepository` osztály hozzáadása után a projekt szerkezetének a következőképpen kell kinéznie:
 
-![__11. ábra:__ Projekt struktúra](/assets/images/vasvari/springboot/project_status.png)
+![__11. ábra:__ Projekt struktúra](/assets/images/vasvari/springboot/project_status.webp)
 
 2. Most már készen állunk néhány adat hozzáadására az __H2__ adatbázisunkba. Ehhez a __Spring Boot__ `CommandLineRunner` interfészt fogjuk használni. A `CommandLineRunner` interfész lehetővé teszi számunkra, hogy további kódot hajtsunk végre, mielőtt az alkalmazás teljesen elindulna. Ezért jó pont ahhoz, hogy demonstrációs adatokat adjunk hozzá az adatbázisunkhoz. A __Spring Boot__ alkalmazás főosztálya implementálja a `CommandLineRunner` interfészt. Tehát meg kell valósítanunk a `run` metódust, ahogy azt az alábbi __DemoApplication.java__ kódban láthatjuk:
 
@@ -425,11 +425,11 @@ public class DemoApplication implements CommandLineRunner {
 
 A naplózások és az általunk beszúrt autók a konzolban láthatóak, miután az alkalmazás végrehajtásra került:
 
-![__12. ábra:__ Beszúrási utasítások](/assets/images/vasvari/springboot/h2_insert_data.png)
+![__12. ábra:__ Beszúrási utasítások](/assets/images/vasvari/springboot/h2_insert_data.webp)
 
 Most már használhatjuk az __H2__ konzolt az autók lekérdezéséhez, ahogyan az alábbi képernyőképen látható:
 
-![__13. ábra:__ H2 console: SELECT * FROM](/assets/images/vasvari/springboot/h2_console_select.png)
+![__13. ábra:__ H2 console: SELECT * FROM](/assets/images/vasvari/springboot/h2_console_select.webp)
 
 Lekérdezéseket definiálhatunk a Spring Data `repository`-kban. Egy lekérdezésnek el kell kezdődnie egy előtaggal, például a `findBy`-al. Az előtag után meg kell határoznunk az entitás osztály mezőit, amelyeket a lekérdezésben használunk. Az alábbiakban három egyszerű lekérdezéshez tartozó mintakódot láthatunk:
 
@@ -556,7 +556,7 @@ Létre fogunk hozni egy új táblát, amit `Owner`-nek nevezünk el és ez __one
 
 A következő __Unified Modeling Language__ (_UML_) diagram mutatja be a táblák közötti kapcsolatot:
 
-![__14. ábra:__ UML diagram](/assets/images/vasvari/springboot/uml.png)
+![__14. ábra:__ UML diagram](/assets/images/vasvari/springboot/uml.webp)
 
 Az alábbi lépésekben megnézzük, hogyan hozzunk létre egy új táblát:
 
@@ -628,7 +628,7 @@ public interface OwnerRepository extends CrudRepository<Owner, Long> {
 2. Most ellenőriznünk kell, hogy minden működik-e. Indítsuk el a programunkat és nézzük meg, hogy mindkét adatbázistábla létrejött-e és nincsenek-e hibák a konzolon. Az alábbi képernyőkép mutatja be a konzolüzeneteket, amikor a táblák létrejönnek:
 
 
-![__15. ábra:__ A Car és az Owner táblák](/assets/images/vasvari/springboot/owner_console_log.png)
+![__15. ábra:__ A Car és az Owner táblák](/assets/images/vasvari/springboot/owner_console_log.webp)
 
 
 3. A __one-to-many__ kapcsolatot a `@ManyToOne` és `@OneToMany` (_jakarta.persistence_) annotációkkal lehet hozzáadni.
@@ -677,7 +677,7 @@ public interface OwnerRepository extends CrudRepository<Owner, Long> {
 
     A projekt futtatásakor a konzolon látni fogjuk, hogy a kapcsolat létrejött:
 
-![__16. ábra:__ A kapcsolat létrejött](/assets/images/vasvari/springboot/one_to_many_console.png)
+![__16. ábra:__ A kapcsolat létrejött](/assets/images/vasvari/springboot/one_to_many_console.webp)
 
 5. Most hozzáadhatunk néhány tulajdonost az adatbázishoz a __CommandLineRunner__ segítségével. Módosítsuk a `Car` entitás osztály konstruktorát és adjunk hozzá egy `Owner` objektumot:
 
@@ -738,7 +738,7 @@ public DemoApplication(CarRepository repository, OwnerRepository orepository) {
 
 9. Ha most futtatjuk az alkalmazást és lekérdezzük az autókat az adatbázisból, látni fogjuk, hogy a tulajdonosok most már kapcsolódnak az autókhoz:
 
-![__17. ábra:__ OneToMany kapcsolat](/assets/images/vasvari/springboot/h2_console_relationships.png)
+![__17. ábra:__ OneToMany kapcsolat](/assets/images/vasvari/springboot/h2_console_relationships.webp)
 
 Ha inkább egy __many-to-many__ kapcsolatot akarunk létrehozni, ami gyakorlatilag azt jelenti, hogy egy tulajdonosnak több autója lehet és egy autónak több tulajdonosa is lehet, akkor a `@ManyToMany` annotációt kell használnunk. 
 
@@ -789,11 +789,11 @@ public void setCars(Set<Car> cars) {
 
     A kapcsolótáblát a `@JoinTable` annotációval határozzuk meg. Ezzel az annotációval megadhatjuk a kapcsolótábla tábla nevét és a kapcsolódó oszlopokat. Az alábbi képernyőkép mutatja be az adatbázis struktúrát, amikor egy __many-to-many__ kapcsolatot használunk:
 
-![__18. ábra:__ ManyToMany kapcsolat](/assets/images/vasvari/springboot/h2_console_many.png)
+![__18. ábra:__ ManyToMany kapcsolat](/assets/images/vasvari/springboot/h2_console_many.webp)
 
 Most az adatbázis _UML_ diagramja a következőképpen néz ki:
 
-![__19. ábra:__ UML diagram](/assets/images/vasvari/springboot/uml2.png)
+![__19. ábra:__ UML diagram](/assets/images/vasvari/springboot/uml2.webp)
 
 ## Összefoglaló
 
@@ -803,4 +803,4 @@ Ezután létrehoztunk egy `CrudRepository`-t az entitás osztályunkhoz, amely _
 
 A következőkben egy __RESTful__ web szolgáltatást fogunk létrehozni a backendünkhöz. Megvizsgáljuk továbbá, hogyan tesztelhetjük a __RESTful__ web szolgáltatást a __Postman__ segítségével.
 
-![__20. ábra:__ 😮‍💨](/assets/images/vasvari/springboot/agh.png)
+![__20. ábra:__ 😮‍💨](/assets/images/vasvari/springboot/agh.webp)

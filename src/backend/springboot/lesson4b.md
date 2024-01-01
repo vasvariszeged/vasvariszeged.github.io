@@ -20,12 +20,12 @@ A __Spring Initalizr__ segítségével a következő lépéseket kell végrehajt
 
 1. Nyissuk meg a __Spring Initializr__-t a https://start.spring.io oldalra navigálva a böngészőnk segítségével. A következő oldalnak kell megjelennie:
 
-![__1. ábra:__ Spring Boot Initializr](/assets/images/vasvari/springboot/springinitializr0.png)
+![__1. ábra:__ Spring Boot Initializr](/assets/images/vasvari/springboot/springinitializr0.webp)
 
 
 2. Egy __Maven projektet__ fogunk generálni Javával és a __Spring Boot__ legújabb stabil __3.2.x__ verziójával. Ha egy újabb _major_ vagy _minor_ verziót használsz, akkor nézd meg a kiadási megjegyzésekben, hogy mi változott. A __Group__ mezőben definiáljuk a csoport azonosítónkat (__org.vasvari__), ami a Java projektünkben is alapcsomag lesz. Az __Artifact__ mezőben definiáljuk a projektünk azonosítóját (__demo__), amely egyben a projektünk neve is lesz az __IntelliJ__-ben.
 
-![__2. ábra:__ Spring Boot projekt létrehozása](/assets/images/vasvari/springboot/springinitializr1.png)
+![__2. ábra:__ Spring Boot projekt létrehozása](/assets/images/vasvari/springboot/springinitializr1.webp)
 
 ::: details Mi a Group, Artifact, Name, Description, Package Name?
 
@@ -55,7 +55,7 @@ Válasszuk ki a megfelelő Java verziót a __Spring Initializr__-ben. Ebben az a
 
 3. Az __ADD DEPENDENCIES...__ gombra kattintva kiválaszthatjuk azokat a függőségeket, amelyekre szükségünk van. A __Spring Boot__ olyan _starter_ csomagokat biztosít, amelyek leegyszerűsítik a Maven konfigurációját. A __Spring Boot__ starterek tulajdonképpen függőségek készletei. A projektünket egy függőséggel kezdjük aminek a neve __Spring Web__. A függőségeket beírhatjuk a keresőmezőbe, vagy kiválaszthatjuk a megjelenő listából, ahogyan azt a következő képernyőképen láthatjuk:
 
-![__3. ábra:__ Add dependencies...](/assets/images/vasvari/springboot/springinitializr2.png)
+![__3. ábra:__ Add dependencies...](/assets/images/vasvari/springboot/springinitializr2.webp)
 
 A __Spring Web__ starter csomag a full stack fejlesztés alapját képezi és beágyazott __Tomcat__ szervert biztosít. Miután hozzáadtuk a függőségeket, a __Spring Initializr__ függőségek szakaszának így kell kinéznie:
 
@@ -63,11 +63,11 @@ A __Spring Web__ starter csomag a full stack fejlesztés alapját képezi és be
 _Apache Tomcat_ egy nyílt forráskódú szoftver, amely egy Java-szerver alkalmazás konténerként működik. A __Tomcat__ fejlesztése az _Apache Software Foundation_ által történik és a Java Servlet, JavaServer Pages (JSP) és más Java alapú technológiák futtatására szolgál. Ezt a konténert __gyakran használják webalkalmazások hosztolására és futtatására__.
 :::
 
-![__4. ábra:__ Dependencies](/assets/images/vasvari/springboot/springinitializr3.png)
+![__4. ábra:__ Dependencies](/assets/images/vasvari/springboot/springinitializr3.webp)
 
 4. Végül kattintsunk a __GENERATE__ gombra, amely egy __*.zip__ csomagot generál számunkra.
 
-![__5. ábra:__ Generate](/assets/images/vasvari/springboot/springgenerate.png)
+![__5. ábra:__ Generate](/assets/images/vasvari/springboot/springgenerate.webp)
 
 Most pedig megnézzük, hogyan futtassuk a projektünket az __IntelliJ IDEA__ segítségével.
 
@@ -78,28 +78,28 @@ A következő lépéseket kell végrehajtani a Maven projekt futtatásához az _
 
 1. Csomagoljuk ki a projekt __*.zip__ csomagját, amelyet nem rég töltöttünk le és indítsuk el az __IntelliJ IDEA__-t.
 
-![__6. ábra:__ Kicsomagolás](/assets/images/vasvari/springboot/unzip.png)
+![__6. ábra:__ Kicsomagolás](/assets/images/vasvari/springboot/unzip.webp)
 
 2. Importáljuk a projektünket az __IntelliJ IDEA__-ba. Az importálási folyamat elindításához válasszuk a __Open__ menüpontot és megnyílik a fájl böngésző. Keressük meg a kicsomagolt mappánkat majd vállaszuk ki és nyissuk meg azt - szintén __Open__.
 
-![__7. ábra:__ IntelliJ IDEA - Projekt importálása](/assets/images/vasvari/springboot/idea1.png)
+![__7. ábra:__ IntelliJ IDEA - Projekt importálása](/assets/images/vasvari/springboot/idea1.webp)
 
 Minden alkalommal, amikor először nyitunk meg egy projektet, az __IntelliJ IDEA__ megjeleníti a __Trust Project__ párbeszédpanelt. 
 
-![__8. ábra:__ Csak nyomjuk meg a Trust Project gombot.](/assets/images/vasvari/springboot/idea2.png)
+![__8. ábra:__ Csak nyomjuk meg a Trust Project gombot.](/assets/images/vasvari/springboot/idea2.webp)
 
 3. A __Project Explorer__ a projektünk csomagszerkezetét is megmutatja. Kezdetben csak egy csomag van, amit `org.vasvari.demo`-nak hívnak. Ez a csomag tartalmazza a fő alkalmazásosztályunkat is, amit `DemoApplication.java` néven nevezték el.
 
-![__9. ábra:__ Project explorer.](/assets/images/vasvari/springboot/idea3.png)
+![__9. ábra:__ Project explorer.](/assets/images/vasvari/springboot/idea3.webp)
 
 4. Most még nincs funkcionalitása az alkalmazásunknak, de le tudjuk futtatni, hogy lássuk, minden sikeresen elindult-e. A projekt futtatásához nyissuk meg a fő osztályt dupla kattintással (`DemoApplication.java`), ahogy azt a következő képernyőképen láthatjuk, majd kattintsunk a futtatás gombra (_a lejátszás ikonra_) az __IntelliJ IDEA__ eszköztárában. Vagy alternatívaként választhatjuk a _Run_ menüt, majd kattintsunk a _Run 'DemoApplication.java'_ lehetőségre:
 
-![__10. ábra:__ Spring Boot projekt elindítása.](/assets/images/vasvari/springboot/idea4.png)
+![__10. ábra:__ Spring Boot projekt elindítása.](/assets/images/vasvari/springboot/idea4.webp)
 
 5. Az __IntelliJ IDEA__-ban megnyílik a _Run_ nézet, amely fontos információkat tartalmaz a programunk állapotáról. Ahogyan azt már korábban megbeszéltük, ez az a nézet, ahol az összes naplózási szöveg és hibaüzenet megjelenik, ezért nagyon fontos, hogy ellenőrizzük a tartalmát, ha valami hibásan működne.
 Ha a program sikeresen lefordult, akkor a konzol végén lévő szövegben látnunk kell az elindított `DemoApplication` osztályt. A következő képernyőképen az __IntelliJ IDEA__ konzol tartalma látható a __Spring Boot__ projektünk elindítása után:
 
-![__11. ábra:__ Spring Boot konzol.](/assets/images/vasvari/springboot/idea5.png)
+![__11. ábra:__ Spring Boot konzol.](/assets/images/vasvari/springboot/idea5.webp)
 
 
 ## Spring Boot - Maven
@@ -159,11 +159,11 @@ _Lásd lent. 👇🏻_
 
 @tab Advanced Settings 
 
-![Allow auto-make to start even if developed application is currently running.](/assets/images/vasvari/springboot/idea_advanced_settings1.png)
+![Allow auto-make to start even if developed application is currently running.](/assets/images/vasvari/springboot/idea_advanced_settings1.webp)
 
 @tab Complier
 
-![Build project automatically.](/assets/images/vasvari/springboot/idea_advanced_settings2.png)
+![Build project automatically.](/assets/images/vasvari/springboot/idea_advanced_settings2.webp)
 
 :::
 
@@ -203,12 +203,12 @@ public class DemoApplication {
 A `logger.info()` metódus egy naplóüzenetet ír ki a konzolra. A naplóüzeneteket a konzolon a projekt futtatása után, ahogy az a következő képernyőképen láthatjuk:
 
 
-![__12. ábra:__ Spring Boot konzol log.](/assets/images/vasvari/springboot/idea6.png)
+![__12. ábra:__ Spring Boot konzol log.](/assets/images/vasvari/springboot/idea6.webp)
 
 
 Hét különböző naplózási szint létezik: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL` és `OFF`. A naplózási szintet konfigurálhatjuk a __Spring Boot__ `application.properties` fájlban. A fájlt a projekt `/resources` mappájában találjuk, ahogyan az alábbi képernyőképen láthatjuk:
 
-![__13. ábra:__ application.properties fájl.](/assets/images/vasvari/springboot/idea7.png)
+![__13. ábra:__ application.properties fájl.](/assets/images/vasvari/springboot/idea7.webp)
 
 Ha a naplózási szintet `DEBUG`-ra állítjuk, akkor a `DEBUG` vagy annál magasabb szintű naplóüzeneteket láthatjuk (__azaz DEBUG, INFO, WARN és ERROR__). A következő példában a naplózási szintet a root számára állítottuk be, de beállíthatjuk a csomagok szintjén is:
 
@@ -228,7 +228,7 @@ server.port=8081
 
 Ha a port foglalt, az alkalmazás nem indul el és a következő __APPLICATION FAILED TO START__ üzenetet fogjuk látni a konzolon:
 
-![__14. ábra:__ port foglalt.](/assets/images/vasvari/springboot/idea8.png)
+![__14. ábra:__ port foglalt.](/assets/images/vasvari/springboot/idea8.webp)
 
 Ha ez történik, akkor le kell állítanunk a `8080`-as porton figyelő folyamatot, vagy más portot kell használnunk a __Spring Boot__ alkalmazásban.
 
