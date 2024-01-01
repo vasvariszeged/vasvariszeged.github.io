@@ -412,4 +412,4 @@ Most, hogy dokumentációt biztosítottunk a __RESTful API__-hoz, a fejlesztők 
 
 Összefoglalva, egy __RESTful__ web szolgáltatást hoztunk létre a __Spring Boot__ segítségével. Először létrehoztunk egy vezérlőt és egy olyan metódust, amely az összes autót __JSON__ formátumban adja vissza. Ezután a __Spring Data REST__-et használtuk egy webes szolgáltatás létrehozásához az összes __CRUD__ funkcionalitással. Bemutattuk a különböző típusú kéréseket, amelyekre szükség van a létrehozott szolgáltatás __CRUD__ funkcióinak használatához. Beleértve saját lekérdezéseinket is a __RESTful__ web szolgáltatásban. Végül megtanultuk, hogyan dokumentálhatjuk megfelelően az __API__-t az __OpenAPI 3__ segítségével. A következőkben programunkat a __Spring Security__ használatával biztonságossá tesszük. Megtanuljuk, hogyan védhetjük meg az adatainkat az azonosítás implementálásával. Ezután csak azonosított felhasználók fognak hozzáférni a __RESTful API__ erőforrásaihoz.
 
-![__17. ábra:__ 😧](/assets/images/vasvari/springboot/surprised.jpg)
+![__17. ábra:__ 😧](/assets/images/vasvari/springboot/surprised.webp)
