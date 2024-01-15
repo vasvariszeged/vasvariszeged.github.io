@@ -25,13 +25,13 @@ Ezt a problémát egy változó oldja meg számunkra. A változók olyan elnevez
 - a típusa
 - és a tartalma vagy értéke. 
 
-A változó típusa azért fontos, mert ennek segítségével tudjuk meg, hogy hány bájtot kell fenntartani számára a memóriában, és a fordítóprogram is így tudja biztosítani, hogy a változó tartalmát helyesen használjuk.
+A változó típusa azért fontos, mert ennek segítségével tudjuk meg, hogy hány bájtot kell fenntartani számára a memóriában és a fordítóprogram is így tudja biztosítani, hogy a változó tartalmát helyesen használjuk.
 A változó használatának első lépése a __deklarálása__. A változó __deklarálása__ lehetővé teszi a számítógép számára, hogy a megfelelő méretű helyet foglaljon számára a memóriában.
 
-A változó __deklarálása__ után értékeket vagy tartalmakat rendelhetünk a változóhoz. Amikor először rendel értéket egy változóhoz, azt __inicializálásnak__ nevezzük. Egy változó __inicializálása__ előtt nem lehet tudni, hogy milyen bitek és bájtok lehetnek az adott memóriahelyen, ezért az inicializálás biztosítja, hogy csak érvényes adatokkal dolgozzunk.
+A változó __deklarálása__ után értékeket vagy tartalmakat rendelhetünk a változóhoz. Amikor először rendelünk értéket egy változóhoz, azt __inicializálásnak__ nevezzük. Egy változó __inicializálása__ előtt nem lehet tudni, hogy milyen bitek és bájtok lehetnek az adott memóriahelyen, ezért az inicializálás biztosítja, hogy csak érvényes adatokkal dolgozzunk.
 
 Bár egy változót csak egyszer __deklarálhatunk__, a program futása során idővel különböző értékeket rendelhetünk hozzá. A játékos pontszámának változója frissülhet, ahogy a játékos pontokat gyűjt. A mögöttes memóriahely ugyanaz marad, de a tartalma idővel új értékekkel változik.
-Amit egy változóval tehetünk, hogy lekérdezzük annak aktuális értékét. Az adatok elmentésének célja, hogy később visszatérhessünk hozzájuk. Amíg egy változót __inicializáltunk__, addig bármikor lekérdezhetjük az aktuális tartalmát, amikor csak szükségünk van rá.
+Amit egy változóval tehetünk, hogy lekérdezzük annak aktuális értékét. Az adatok elmentésének célja, hogy később visszatérhessünk hozzájuk. Ha egy változót __inicializáltunk__, bármikor lekérdezhetjük az aktuális tartalmát, amikor csak szükségünk van rá.
 
 
 ## Változók létrehozása és használata C# nyelven
@@ -61,7 +61,7 @@ username = Console.ReadLine();
 Console.WriteLine("Hi " + username);
 ```
 
-Tekintettel arra, hogy a fenti `username` két különböző felhasználónév tárolására használjuk, ésszerű a változó újrafelhasználása. Másrészt, ha a második érték valami mást képvisel - mondjuk egy kedvenc színt -, akkor általában jobb egy második változót létrehozni:
+Tekintettel arra, hogy a fenti `username` két különböző felhasználónév tárolására használjuk ésszerű a változó újrafelhasználása. Másrészt, ha a második érték valami mást képvisel - _mondjuk egy kedvenc színt_ -, akkor általában jobb egy második változót létrehozni:
 
 
 ```csharp
@@ -74,7 +74,7 @@ favoriteColor = Console.ReadLine();
 Console.WriteLine("Hi " + favoriteColor);
 ```
 
-:::info Ne feledje, hogy a változók neveit az emberek használják, nem a számítógépek. Olyan neveket válasszunk, amelyek segítenek a programozóknak megérteni a szándékunkat. A számítógépet ez nem érdekli.
+:::info Ne feledjük, hogy a változók neveit az emberek használják, nem a számítógépek. Olyan neveket válasszunk, amelyek segítenek a programozóknak megérteni a szándékunkat. A számítógépet ez nem érdekli.
 :::
 
 :::tip Egy második változó deklarálása technikailag több helyet foglal a memóriában, de néhány extra bájt elköltése (amikor milliárdok vannak), hogy a kód érthetőbbé váljon, egyértelmű nyereség.
@@ -85,7 +85,7 @@ Console.WriteLine("Hi " + favoriteColor);
 
 A C# programokban minden változóhoz, értékhez és kifejezéshez tartozik egy típus. Eddig csak a `string` (_szöveg_) típussal találkoztunk. De sok más típus is létezik, sőt később saját típusokat is definiálhatunk. Most pedig nézzünk meg egy második típust: az `int`-et, amely az egész számot jelöli.
 
-Az egész szám egy egész szám (_nincs tört vagy tizedes szám_), de vagy pozitív, vagy negatív, vagy nulla. Tekintettel a számítógép matematikai képességére, nem meglepő, hogy a számok tárolása gyakori, és sok változó használja az `int` típust. Például ezek mindegyike jól reprezentálható `int`-ként: 
+Az egész szám egy egész szám (_nincs tört vagy tizedes szám_) vagy pozitív, vagy negatív, vagy nulla. Tekintettel a számítógép matematikai képességére, nem meglepő, hogy a számok tárolása gyakori és sok változó használja az `int` típust. Például ezek mindegyike jól reprezentálható `int`-ként: 
 
 - egy játékos pontszáma,
 - a képernyő pixelhelyei, 
@@ -101,7 +101,7 @@ int score;
 Tehát a __score__ változó `int` értékeket tartalmaz.
 
 :::warning Ez a típusfogalom fontos, ezért ismét elmondom:
-__A típusok számítanak a C#-ban__. Minden értéknek, változónak és kifejezésnek van egy adott típusa, és a fordító gondoskodik arról, hogy ne keverjük össze őket. 
+__A típusok számítanak a C#-ban__. Minden értéknek, változónak és kifejezésnek van egy adott típusa és a fordító gondoskodik arról, hogy ne keverjük össze őket. 
 :::
 
 
@@ -125,7 +125,7 @@ score = 0; // 0 is an int literal.
 
 Miután ez a kódsor lefutott, a __score__ változó - egy memóriahely, amely a __score__ nevű `int`-ek tárolására van fenntartva - értéke `0` lesz.
 
-A következőkben láthatod, hogy a `score`-hoz különböző értékeket, valamint negatív számokat is rendelhetünk:
+A következőkben láthatjuk, hogy a `score`-hoz különböző értékeket, valamint negatív számokat is rendelhetünk:
 
 ```csharp
 score = 4;
@@ -136,7 +136,7 @@ score = -1564;
 
 ## A változó olvasása nem változtatja meg azt
 
-Amikor egy változó tartalmát olvasod, a változó tartalma lemásolódik. Ezt szemléltetésképpen:
+Amikor egy változó tartalmát olvassuk, a változó tartalma lemásolódik. Ezt szemléltetésképpen:
 
 ```csharp{7}
 int a; 
@@ -150,7 +150,7 @@ a = -3;
 ```
 
 
-Az első két sorban `a` és `b` deklarálva van, és kap egy kezdeti értéket (__5__, illetve __2__), ami valahogy így néz ki:
+Az első két sorban `a` és `b` deklarálva van és kap egy kezdeti értéket (__5__, illetve __2__), ami valahogy így néz ki:
 
 ![](/assets/images/vasvari/csharp/variable1.png)
 
@@ -182,7 +182,7 @@ int a, b, c;
 Console.WriteLine(42);
 ```
 
-A következő részben még több változótípust fogunk megismerni. A `Console.WriteLine` ezek mindegyikét képes megjeleníteni -  úgy van felépítve, hogy bármilyen típussal működjön.
+A következőkben még több változótípust fogunk megismerni. A `Console.WriteLine` ezek mindegyikét képes megjeleníteni -  úgy van felépítve, hogy bármilyen típussal működjön.
 
 
 ## Változó nevek
@@ -199,5 +199,5 @@ A következő részben még több változótípust fogunk megismerni. A `Console
     1. Pontosan írjuk le, hogy mit tartalmaz a változó. Ha a változó egy játékos pontszámát tartalmazza, a `score` vagy a `playerScore` elfogadható. A `number` és az `x` azonban nem elég leíró.
     2. Ne rövidítsük vagy távolítsunk el betűket. Több időt töltünk a kód olvasásával, mint a megírásával.
     3. Ne bosszankodjunk a hosszú nevek miatt. Jobb, ha leíró nevet használunk, mintha karaktereket spórolnánk.
-    4. Tegyük egyértelművé a többszavas nevek közötti határokat. A `playerScore` név könnyebben olvasható, mint a `playerscore`. A C# programozók körében két konvenció a __camelCase__ (vagy _lowerCamelCase_) és a __PascalCase__ (vagy _UpperCamelCase_), amelyeket a nevek írásmódját szemlélteti. Az elsőben az első szó kivételével minden szó nagybetűvel kezdődik. A másodikban minden szó nagybetűvel kezdődik. A szó közepén lévő nagy nagybetű miatt úgy néz ki, mint egy tevepúp, ezért is kapta ezt a nevet. A legtöbb C# programozó a változókra a __lowerCamelCase__, a többi dologra pedig a __UpperCamelCase__ esetet használja. Azt javaslom, hogy a kezdetek kezdetén maradjunk ennél a konvenciónál. A későbbiekben pedig majd Önökre bízom.
+    4. Tegyük egyértelművé a többszavas neveket. A `playerScore` név könnyebben olvasható, mint a `playerscore`. A C# programozók körében két konvenció a __camelCase__ (vagy _lowerCamelCase_) és a __PascalCase__ (vagy _UpperCamelCase_), amelyeket a nevek írásmódját szemlélteti. Az elsőben, az első szó kivételével minden szó nagybetűvel kezdődik. A másodikban minden szó nagybetűvel kezdődik. A szó közepén lévő nagy nagybetű miatt úgy néz ki, mint egy tevepúp, ezért is kapta ezt a nevet. A legtöbb C# programozó a változókra a __lowerCamelCase__, a többi dologra pedig a __UpperCamelCase__ esetet használja.
 

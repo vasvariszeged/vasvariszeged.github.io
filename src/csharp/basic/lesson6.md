@@ -13,7 +13,7 @@ icon: fa-solid fa-6
 - A valós számok tárolására három típus létezik: `float`, `double` és `decimal`.
 - A `bool` típus a logikában használt igazságértékeket (_true_ és _false_) tárolja.
 - Ezek a típusok egy sokkal nagyobb típusrendszer építőkövei.
-- A `var` használata egy változó típusára azt jelenti, hogy a fordító a környező kódból következtet a típusára, így nem kell begépelnie. (De ettől még van egy konkrét típusa.)
+- A `var` használata egy változó típusnál azt jelenti, hogy a fordító a környező kódból következtet a típusára, így nem kell begépelnünk.
 - A `Convert` osztály segít az egyik típust egy másikba konvertálni.
 :::
 
@@ -23,9 +23,9 @@ A C# nyelvben a változók és az értékek típusai meg kell, hogy egyezzenek, 
 
 Miért olyan fontosak a típusok?
 
-Minden adatot, amelyet a programjainkban ábrázolni szeretnénk, a számítógép áramkörében kell tárolni, és csak a bináris __1__ és __0__ értékekre korlátozódik. Ha egy számot akarunk tárolni, akkor szükségünk van egy sémára, amely a bitek (_egyetlen 1 vagy 0_) és a bájtok (_8 bitből álló csoport és a bitek szabványos csoportosítási mérete_) használatával reprezentálja a tárolni kívánt lehetséges számok tartományát. Ha egy szót akarunk ábrázolni, akkor szükségünk van valamilyen sémára a bitek és bájtok használatára a betűk és betűsorozatok ábrázolására. Tágabb értelemben bármit, amit egy programban ábrázolni akarunk, szükségünk van egy sémára, amellyel binárisan kifejezhetjük.
+Minden adatot, amelyet a programjainkban ábrázolni szeretnénk, a számítógép áramkörében kell tárolni és csak a bináris __1__ és __0__ értékekre korlátozódik. Ha egy számot akarunk tárolni, akkor szükségünk van egy sémára, amely a bitek (_egyetlen 1 vagy 0_) és a bájtok (_8 bitből álló csoport és a bitek szabványos csoportosítási mérete_) használatával reprezentálja a tárolni kívánt lehetséges számok tartományát. Ha egy szót akarunk ábrázolni, akkor szükségünk van valamilyen sémára a bitek és bájtok használatára a betűk és betűsorozatok ábrázolására. Tágabb értelemben bármit, amit egy programban ábrázolni akarunk, szükségünk van egy sémára, amellyel binárisan kifejezhetjük.
 
-Minden típus saját szabályokat határoz meg az értékek bináris ábrázolására, és a különböző típusok nem felcserélhetők egymással. Nem lehet egész számok reprezentálására szánt biteket és bájtokat venni, és ezeket a biteket és bájtokat átértelmezni karakterláncként, és azt várni, hogy értelmet nyerjünk belőle. Ugyanígy nem vehetünk szöveget reprezentáló biteket és bájtokat, és nem értelmezhetjük őket egész számként, és nem várhatjuk el, hogy ez értelmes legyen. Ezek nem ugyanazok. Ezt nem lehet megkerülni.
+Minden típus saját szabályokat határoz meg az értékek bináris ábrázolására és a különböző típusok nem felcserélhetők egymással. Nem lehet egész számok reprezentálására szánt biteket és bájtokat venni és ezeket a biteket és bájtokat átértelmezni karakterláncként és azt várni, hogy értelmet nyerjünk belőle. Ugyanígy nem vehetünk szöveget reprezentáló biteket és bájtokat és nem értelmezhetjük őket egész számként és nem várhatjuk el, hogy ez értelmes legyen. Ezek nem ugyanazok. Ezt nem lehet megkerülni.
 
 Ez nem jelenti azt, hogy minden típus egy külön világ, amely soha nem léphet kölcsönhatásba a többi típussal. Gyakran át tudunk és át is fogunk alakítani egyik típusból a másikba. De az átalakulással járó költségek nem ingyenesek, ezért inkább tudatosan tesszük, mint véletlenül.
 
@@ -35,14 +35,14 @@ Kiemelkedően fontos, hogy a C# nem talál ki teljesen új rendszereket és szab
 
 Nézzük meg a C# programokban elérhető alapvető típusokat, kezdve azokkal, amelyek az egész számokat képviselik. Létezik nyolc különböző típus is az egész számokkal való munkához. Ezt a nyolc típust egész típusoknak vagy integertípusoknak nevezik. Mindegyik típus más-más számú bájtot használ, ami lehetővé teszi, hogy nagyobb számokat tároljunk több memória felhasználásával, vagy kisebb számokat tároljunk memóriakímélő módon.
 
-Az `int` típus _4 bájtot_ használ, és számokat képes reprezentálni körülbelül -2 milliárdtól +2 milliárdig.
+Az `int` típus _4 bájtot_ használ és számokat képes reprezentálni körülbelül -2 milliárdtól +2 milliárdig.
 
-Ellentétben a `short` típussal, amely _2 bájtot_ használ és körülbelül __-32,000__-től __+32,000__-ig terjedő számokat képes reprezentálni, a long típus _8 bájtot_ használ, és körülbelül -9 kvintilliótól +9 kvintillióig terjedő számokat képes reprezentálni.
+Ellentétben a `short` típussal, amely _2 bájtot_ használ és körülbelül __-32,000__-től __+32,000__-ig terjedő számokat képes reprezentálni, a long típus _8 bájtot_ használ és körülbelül -9 kvintilliótól +9 kvintillióig terjedő számokat képes reprezentálni.
 
-A méretek és tartományok azt mutatják meg, mikor választhatod a `short` vagy a `long` típust az `int` helyett. Ha a memória korlátozott, és a `short` tartománya elegendő, használhatsz `short`-ot. Ha olyan számokat kell használnod, amelyek nagyobbak, mint amit az `int` kezelne, akkor a `long` típusra kell váltanod, még akkor is, ha több bájtba kerül.
+A méretek és tartományok azt mutatják meg, mikor választhatod a `short` vagy a `long` típust az `int` helyett. Ha a memória korlátozott és a `short` tartománya elegendő, használhatsz `short`-ot. Ha olyan számokat kell használnod, amelyek nagyobbak, mint amit az `int` kezelne, akkor a `long` típusra kell váltanod, még akkor is, ha több bájtba kerül.
 
 
-A `short`, `int` és `long` típusok előjeles típusok, pozitív vagy negatív előjelet tartalmaznak, és pozitív és negatív értékeket tárolnak. 
+A `short`, `int` és `long` típusok előjeles típusok, pozitív vagy negatív előjelet tartalmaznak és pozitív és negatív értékeket tárolnak. 
 Ha csak pozitív számokra van szüksége, akkor erre szolgálnak az előjel nélküli típusok: `ushort`, `uint` és `ulong`. Ezek mindegyike ugyanannyi bájtot használ, mint az előjeles megfelelőjük, nem tárolhatunk bennük negatív számokat, de cserébe kétszer annyi pozitív számot tárolhatunk. Így az `ushort` tartománya __0__-tól körülbelül __65 000__-ig, az `uint` tartománya __0__-tól körülbelül __4__ milliárdig, az `ulong` tartománya pedig __0__-tól körülbelül __18__ kvintillióig terjed.
 
 Az utolsó két egész számtípus egy kicsit más. A `byte` típus, amely egyetlen bájtot használ a __0__ és __255__ közötti értékek ábrázolására (előjel nélküli). Bár az integer-szerű, a byte-típust gyakrabban használják olyan bájtok vagy bájtok gyűjteményének kifejezésére, amelyeknek nincs konkrét struktúrájuk (_vagy a program nem ismeri őket_). A bájt típusnak van egy előjeles megfelelője, az `sbyte`, amely a -128 és +127 közötti értékeket képviseli. Az `sbyte` típus nem túl gyakran használatos, de teljessé teszi a készletet.
@@ -96,7 +96,7 @@ Az `int`-nél kisebb dolgok esetében nincs szükség semmi különlegesre az ad
 byte aNumber = 32;
 ```
 
-A __32__ egy `int` literál, de a fordító elég intelligens ahhoz, hogy észrevegye, hogy egy `byte`-ban próbálod tárolni, és ellenőrizze, hogy az __32__ a megengedett tartományon belül van-e a `byte` típus esetében. A fordító kezeli ezt. Ellentétben, ha olyan literált használnál, ami túl nagy a `byte` típushoz, fordítási hibát kapnál, ami megakadályozza a programod fordítását és futtatását.
+A __32__ egy `int` literál, de a fordító elég intelligens ahhoz, hogy észrevegye, hogy egy `byte`-ban próbálod tárolni és ellenőrizze, hogy az __32__ a megengedett tartományon belül van-e a `byte` típus esetében. A fordító kezeli ezt. Ellentétben, ha olyan literált használnál, ami túl nagy a `byte` típushoz, fordítási hibát kapnál, ami megakadályozza a programod fordítását és futtatását.
 
 Ez ugyanez a szabály érvényes az `sbyte`, `short` és `ushort` típusokra is.
 
@@ -114,7 +114,7 @@ aVeryBigNumber = 10000000000L;
 aVeryBigNumber = 10000000000UL;
 ```
 
-Az __U__ azt jelenti, hogy az érték előjel nélküli, és vagy `uint` vagy `ulong` kell, hogy legyen. Az __L__ azt jelzi, hogy a literálnak `long`-nak vagy `ulong`-nak kell lennie, a mérettől függően. Az __UL__ azt jelzi, hogy `ulong`-nak kell lennie. Ezek az utótagok lehetnek nagy- vagy kisbetűsek, és bármelyik sorrendben. Kerüljük azonban a kisbetűs __l__ használatát, mert az túlságosan úgy néz ki, mint az __1__.
+Az __U__ azt jelenti, hogy az érték előjel nélküli és vagy `uint` vagy `ulong` kell, hogy legyen. Az __L__ azt jelzi, hogy a literálnak `long`-nak vagy `ulong`-nak kell lennie, a mérettől függően. Az __UL__ azt jelzi, hogy `ulong`-nak kell lennie. Ezek az utótagok lehetnek nagy- vagy kisbetűsek és bármelyik sorrendben. Kerüljük azonban a kisbetűs __l__ használatát, mert az túlságosan úgy néz ki, mint az __1__.
 
 Ezekre az utótagokra nem túl gyakran lesz szükségünk.
 
@@ -139,14 +139,14 @@ int c = 1_2__3___4____5;
 
 Nyolc típus áll rendelkezésre az egész számok tárolására, de hogyan döntjük el, hogy melyiket használjuk?
 
-Egyrészt gondosan megfontolhatjuk azokat az értéktartományokat, amelyekre szükségünk lehet bármely változónál, majd kiválaszthatjuk a legrövidebbet (_a memóriahasználat csökkentése érdekében_), amely belefér az elképzelt tartományunkba. Például, ha egy játékos pontszámára van szükségünk, és tudjuk, hogy sosem lehet negatív, akkor már eleve kizártuk a nyolc lehetőségnek a felét. Ha a játékos pontszáma a százezreket is elérheti egy játék során, akkor kizárhatjuk a `byte` és `ushort` típusokat, mert azok nem elég nagyok. Ez csak az `uint` és `ulong` típusokat hagyja meg nekünk. Ha úgy gondoljuk, hogy a játékos pontszáma elérheti a 4 milliárdot, jobb, ha `ulong` típust használunk, de ha az adott értékek csak néhány milliót érnek el, akkor biztonságos az `uint` használata is. (_Mindig megváltoztathatjuk egy változó típusát, és újra fordíthatjuk a programot, ha netán rosszul sikerült a típus kiválasztása - de könnyebb volna elsőre helyesen kiválasztani._)
+Egyrészt gondosan megfontolhatjuk azokat az értéktartományokat, amelyekre szükségünk lehet bármely változónál, majd kiválaszthatjuk a legrövidebbet (_a memóriahasználat csökkentése érdekében_), amely belefér az elképzelt tartományunkba. Például, ha egy játékos pontszámára van szükségünk és tudjuk, hogy sosem lehet negatív, akkor már eleve kizártuk a nyolc lehetőségnek a felét. Ha a játékos pontszáma a százezreket is elérheti egy játék során, akkor kizárhatjuk a `byte` és `ushort` típusokat, mert azok nem elég nagyok. Ez csak az `uint` és `ulong` típusokat hagyja meg nekünk. Ha úgy gondoljuk, hogy a játékos pontszáma elérheti a 4 milliárdot, jobb, ha `ulong` típust használunk, de ha az adott értékek csak néhány milliót érnek el, akkor biztonságos az `uint` használata is. (_Mindig megváltoztathatjuk egy változó típusát és újra fordíthatjuk a programot, ha netán rosszul sikerült a típus kiválasztása - de könnyebb volna elsőre helyesen kiválasztani._)
 
 :::danger Az a stratégia, hogy a legkisebb praktikus tartományt választjuk ki egy adott változóhoz, előnyös, de két dolog ellene szól.
 Az első az, hogy a modern programozásban ritkán számít egyetlen bájtnyi hely megtakarítása. Túl sok memória van ahhoz, hogy az egyes bájtokon bosszankodjunk. 
 
-A második, hogy a számítógépek hardvere nem támogatja a kisebb típusokkal való matematikai műveleteket. A számítógép átalakítja őket `int`-ekké, és a műveleteket `int`-ként futtatja, ami arra kényszerít minket, hogy ezután bajlódjunk azzal, hogy az eredményt visszaváltoztassuk a kisebb típusra. Az `int` típus kényelmesebb, mint az `sbyte`, `byte`, `short` és `ushort` típusok, ha sok matematikai műveletet végzünk.
+A második, hogy a számítógépek hardvere nem támogatja a kisebb típusokkal való matematikai műveleteket. A számítógép átalakítja őket `int`-ekké és a műveleteket `int`-ként futtatja, ami arra kényszerít minket, hogy ezután bajlódjunk azzal, hogy az eredményt visszaváltoztassuk a kisebb típusra. Az `int` típus kényelmesebb, mint az `sbyte`, `byte`, `short` és `ushort` típusok, ha sok matematikai műveletet végzünk.
 
-Ezért a gyakran alkalmazott stratégia az, hogy `int`, `uint`, `long` vagy `ulong` típusokat használjunk szükség esetén, és csak akkor alkalmazzuk a `byte`, `sbyte`, `short` és `ushort` típusokat, ha egyértelmű és jelentős előnye van.
+Ezért a gyakran alkalmazott stratégia az, hogy `int`, `uint`, `long` vagy `ulong` típusokat használjunk szükség esetén és csak akkor alkalmazzuk a `byte`, `sbyte`, `short` és `ushort` típusokat, ha egyértelmű és jelentős előnye van.
 ::::
 
 
@@ -170,7 +170,7 @@ Ez a példa mutatja, hol lehet hasznos ez. A színeket gyakran hat vagy nyolc he
 
 ## Szöveg: Karakterek és karakterláncok
 
-Van még pár numerikus típus, de most hagyjuk egy kicsit azokat, és nézzük meg, hogyan lehet reprezentálni karaktereket és hosszabb szövegeket.
+Van még pár numerikus típus, de most hagyjuk egy kicsit azokat és nézzük meg, hogyan lehet reprezentálni karaktereket és hosszabb szövegeket.
 
 A C#-ban a `char` típus egyetlen karaktert reprezentál, míg a `string` a tetszőleges hosszúságú szöveget ábrázolja.
 
@@ -183,13 +183,13 @@ char baseball = '⚾';
 
 _(A konzolablak azt a baseball karaktert nem tudja megjeleníteni.)_
 
-Ha ismerjük a szimbólum hexadecimális __Unicode__ számát, és azt szeretnénk használni akkor leírhatjuk egy __\u__ után:
+Ha ismerjük a szimbólum hexadecimális __Unicode__ számát és azt szeretnénk használni akkor leírhatjuk egy __\u__ után:
 
 ```csharp
 char aLetter = '\u0061'; // An 'a'
 ```
 
-A `string` típus számos karaktert egy sorozatba gyűjt, hogy lehetővé tegye a tetszőleges szöveg reprezentálását. A `string` szó a matematika világából származik, ahol egy `string` egy szimbólumok sorozata, amelyeket egy meghatározott halmazból választanak ki, egymás után, tetszőleges hosszúságban. Ez egy olyan kifejezés, amit a programozási világ ellopott a matematika világából, és a legtöbb programozási nyelv ezt az elképzelést `string`-nek nevezi.
+A `string` típus számos karaktert egy sorozatba gyűjt, hogy lehetővé tegye a tetszőleges szöveg reprezentálását. A `string` szó a matematika világából származik, ahol egy `string` egy szimbólumok sorozata, amelyeket egy meghatározott halmazból választanak ki, egymás után, tetszőleges hosszúságban. Ez egy olyan kifejezés, amit a programozási világ ellopott a matematika világából és a legtöbb programozási nyelv ezt az elképzelést `string`-nek nevezi.
 
 A `string` literális úgy készül, hogy a kívánt szöveget dupla idézőjelbe helyezzük:
 
@@ -205,7 +205,7 @@ A C# három olyan típust tartalmaz, amelyeket lebegőpontos adattípusoknak nev
 
 A lebegőpontos típusok esetében néhány bit tárolja a jelentős számjegyeket, befolyásolva a pontosságot, míg más bit-ek meghatározzák, hogy mennyire nagy vagy kicsi, befolyásolva az ábrázolt nagyságrendet. 
 
-Háromféle lebegőpontos szám típus létezik: `float`, `double` és `decimal`. A `float` típus __4 bájtot__ használ, míg a `double` ennek kétszeresét (ezért a `double` név) __8 bájt__. A `decimal` típus __16 bájtot__ használ. Míg a `float` és `double` a számítástechnika világában elfogadott konvenciókat követik, beleértve magát a számítógép áramkörét is, a `decimal` nem. Ez azt jelenti, hogy a `float` és `double` gyorsabbak. Azonban a `decimal` az előjeles számjegyek tárolására használja a legtöbb bitjét, és a legpontosabb lebegőpontos típus. Ha olyan feladatot végzel, amely rendkívüli pontosságot igényel, még a sebesség rovására is, a `decimal` a jobb választás.
+Háromféle lebegőpontos szám típus létezik: `float`, `double` és `decimal`. A `float` típus __4 bájtot__ használ, míg a `double` ennek kétszeresét (ezért a `double` név) __8 bájt__. A `decimal` típus __16 bájtot__ használ. Míg a `float` és `double` a számítástechnika világában elfogadott konvenciókat követik, beleértve magát a számítógép áramkörét is, a `decimal` nem. Ez azt jelenti, hogy a `float` és `double` gyorsabbak. Azonban a `decimal` az előjeles számjegyek tárolására használja a legtöbb bitjét és a legpontosabb lebegőpontos típus. Ha olyan feladatot végzel, amely rendkívüli pontosságot igényel, még a sebesség rovására is, a `decimal` a jobb választás.
 
 Ebben a táblázatban összefoglaltam a lebegőpontos típusokat (`float`, `double`, `decimal`) a tárolt bájtok, a tartomány, a pontosság számjegyekben, valamint a hardveres támogatás szempontjából.
 
@@ -244,7 +244,7 @@ Egy `bool` elméletileg csak egyetlen bitet használhatna, de ehelyett egy telje
 
 ## Típuskövetkeztetés
 
-Minden változónak, értéknek és kifejezésnek van egy meghatározott ismert típusa. A változók deklarálásakor nagyon pontosan megadtuk az egyes változók típusát. A fordító azonban nagyon okos - képes átnézni a kódot, és a körülötte lévő jelekből és nyomokból kitalálni (de inkább __kikövetkeztetni__), hogy az milyen típusú. Ezt a funkciót típuskövetkeztetésnek nevezzük. Ez a fordító Sherlock Holmes-ja.
+Minden változónak, értéknek és kifejezésnek van egy meghatározott ismert típusa. A változók deklarálásakor nagyon pontosan megadtuk az egyes változók típusát. A fordító azonban nagyon okos - képes átnézni a kódot és a körülötte lévő jelekből és nyomokból kitalálni (de inkább __kikövetkeztetni__), hogy az milyen típusú. Ezt a funkciót típuskövetkeztetésnek nevezzük. Ez a fordító Sherlock Holmes-ja.
 
 A típuskövetkeztetést számos nyelvi jellemzőre használják, de az egyik legjelentősebb az, hogy a fordító képes következtetni egy változó típusára a kód alapján, amellyel inicializálva van. Nem kell mindig magunknak kiírni egy változó típusát. Használhatjuk helyette a `var` kulcsszót:
 
@@ -252,7 +252,7 @@ A típuskövetkeztetést számos nyelvi jellemzőre használják, de az egyik le
 var message = "Hello, World!";
 ```
 
-A fordító képes észrevenni, hogy a `"Hello, World!"` egy karakterlánc, és ezért a `message` változónak is karakterláncnak kell lennie ahhoz, hogy ez a kód működjön. A `var` használatával a fordítónak azt mondjuk, "_Ez az, amit vársz. Tudom, hogy meg tudod oldani. Nem foglak untatni azzal, hogy magam írom le._"
+A fordító képes észrevenni, hogy a `"Hello, World!"` egy karakterlánc és ezért a `message` változónak is karakterláncnak kell lennie ahhoz, hogy ez a kód működjön. A `var` használatával a fordítónak azt mondjuk, "_Ez az, amit vársz. Tudom, hogy meg tudod oldani. Nem foglak untatni azzal, hogy magam írom le._"
 
 Ez csak akkor működik, ha a változót ugyanazon a soron inicializáljuk, ahol deklaráljuk. Ellenkező esetben nincs elegendő információ a fordító számára ahhoz, hogy következtessen a típusára. Ez nem fog működni:
 
@@ -274,7 +274,7 @@ var input = Console.ReadLine();
 
 A számítógép képes következtetni, hogy az `input` egy karakterlánc, mivel tudja, hogy a `ReadLine` karakterláncokat ad vissza. Az ilyen információk kinyerése sokkal nehezebb számunkra.
 
-Egy `var`-ral definiált változó továbbra is egy konkrét típust használ. Ez nem egy rejtélyes típus, nem változtatható típus, és nem egy mindenre jó típus. Továbbra is egy meghatározott típussal rendelkezik, csak épp nem írtuk le explicit módon. Ez a példa nem fog működni:
+Egy `var`-ral definiált változó továbbra is egy konkrét típust használ. Ez nem egy rejtélyes típus, nem változtatható típus és nem egy mindenre jó típus. Továbbra is egy meghatározott típussal rendelkezik, csak épp nem írtuk le explicit módon. Ez a példa nem fog működni:
 
 ```csharp
 var something = "Hello";
@@ -292,7 +292,7 @@ int favoriteNumber = Convert.ToInt32(favoriteNumberText);
 Console.Write(favoriteNumber + " is a great number!");
 ```
 
-Láthatod, hogy a `Convert.ToInt32` metódusa szövegként vár bemenetet, és egy egész számot ad eredményként, az átalakítás folyamatában a szöveget konvertálva. A `Convert` osztálynak vannak `To...` metódusai, amelyek lehetővé teszik a beépített típusok közötti konvertálást:
+Láthatod, hogy a `Convert.ToInt32` metódusa szövegként vár bemenetet és egy egész számot ad eredményként, az átalakítás folyamatában a szöveget konvertálva. A `Convert` osztálynak vannak `To...` metódusai, amelyek lehetővé teszik a beépített típusok közötti konvertálást:
 
 | Method Name | Target Type | Method Name | Target Type |
 |-------------|-------------|-------------|-------------|
@@ -325,4 +325,4 @@ Néhányan ezt a stílust részesítik előnyben a többnyire egyenértékű `Co
 
 
 
-![Az itt látható diagram összefoglalja a C# típusrendszert. Ez tartalmazza mindazt, amit nagyjából tárgyaltunk, és még jó néhány más típust és kategóriát is, amelyeket a jövőben fogunk tárgyalni.](/assets/images/vasvari/csharp/typeofcsharp.png)
+![Az itt látható diagram összefoglalja a C# típusrendszert. Ez tartalmazza mindazt, amit nagyjából tárgyaltunk és még jó néhány más típust és kategóriát is, amelyeket a jövőben fogunk tárgyalni.](/assets/images/vasvari/csharp/typeofcsharp.png)
