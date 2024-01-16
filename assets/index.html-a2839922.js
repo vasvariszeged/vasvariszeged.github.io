@@ -1,0 +1,1 @@
+import{_ as t}from"./uc-c26bf9d6.js";import{_ as o}from"./plugin-vue_export-helper-c27b6911.js";import{o as n,c as r,b as e}from"./app-c11b8a6e.js";const _={},c=e("figure",null,[e("img",{src:t,alt:"",tabindex:"0",loading:"lazy"}),e("figcaption")],-1),i=[c];function s(a,l){return n(),r("div",null,i)}const p=o(_,[["render",s],["__file","index.html.vue"]]);export{p as default};
