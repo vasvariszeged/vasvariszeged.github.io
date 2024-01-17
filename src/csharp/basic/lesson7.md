@@ -5,15 +5,15 @@ icon: fa-solid fa-7
 # Matematika
 
 :::note Röviden
-- Az összeadás (`+`), kivonás (`-`), szorzás (`*`), osztás (`/`) és maradék (`%`) mind használható matematikai kifejezésekhez: `int a = 3 + 2 / 4 * 6;`
-- A `+` és `-` operátorok előjelek jelölésére (_vagy egy érték negálására_) is használhatók: _+3_, _-2_ vagy _-a_.
+- Az összeadás (`+`), kivonás (`-`), szorzás (`*`), osztás (`/`) és maradék (`%`) mind használható matematikai kifejezésekhez.
+- A `+` és `-` operátorok előjelek jelölésére (_vagy egy érték negálására_) is használhatók.
 - A műveletek sorrendje megfelel a matematikai világnak.
 - A sorrendet úgy változtathatjuk meg, hogy zárójelek segítségével csoportosítjuk azokat a dolgokat, amelyeket először szeretnénk elvégezni.
-- Az összetett hozzárendelési operátorok (`+=`, `-=`, `*=`, `/=`, `%=`) olyan rövidítések, amelyek egy változót egy matematikai művelettel állítanak be. `a += 3;` ugyanaz, mint `a = a + 3;`
-- A növelő és csökkentő operátorok: `a++;` `b--;`
+- Az összetett hozzárendelési operátorok (`+=`, `-=`, `*=`, `/=`, `%=`) olyan rövidítések, amelyek egy változót egy matematikai művelettel állítanak be.
+- A növelő és csökkentő operátorok
 - A numerikus típusok mindegyike definiál speciális értékeket a tartományaikhoz (`int.MaxValue`, `double.MinValue`, stb.), a lebegőpontos típusok pedig `PositiveInfinity`, `NegativeInfinity` és `NaN` értékeket is definiálnak.
 - Az egész számok osztása elhagyja a maradékokat, míg a lebegőpontos osztás nem.
-- A típusok között átváltással konvertálhatunk: `int x = (int)3.3;`
+- A típusok között konvertálhatunk: `int x = (int)3.3;`
 - A `Math` és `MathF` osztályok tartalmaznak egy sor segédmetódust a gyakori matematikai műveletek kezelésére.
 :::
 
@@ -21,13 +21,13 @@ A számítógépeket a matematika céljából építették fel és itt az ideje,
 
 ## Műveletek és operátorok
 
-Egy művelet egy számítás, amely két számot vesz figyelembe és valamilyen módon kombinálva egyetlen eredményt hoz létre. Minden operátor azt jelzi, hogy hogyan vannak kombinálva a számok és minden operátort egy adott szimbólum reprezentál. Például a __2 + 3__ egy művelet. A művelet az összeadás, amit a __+__ szimbólummal jelölünk. Azokat a dolgokat, amelyeket egy művelet használ, operandusoknak nevezzük.
+Az operátor egy adott szimbólum reprezentál, amely azt jelzi hogyan vannak kombinálva a számok. Például a __2 + 3__ egy művelet. A művelet az összeadás, amit a __+__ szimbólummal jelölünk. Operandusoknak nevezzük amelyeket egy művelet használ.
 
 A legtöbb operátor két operandust igényel. Ezeket bináris operátoroknak nevezzük ("_bináris_" azt jelenti, hogy "_két dologból áll_"). Egy operátor, amely egy operandust igényel, unáris operátor, míg az, amely háromat igényel, ternáris operátor. __A C# nyelvnek sok bináris operátora van, néhány unáris operátora és egyetlen ternáris operátora.__
 
 ## Összeadás, kivonás, szorzás és osztás
 
-A C# a matematika világából kölcsönzi az operátorszimbólumokat. Például a 2 és a 3 összeadása és az eredmény tárolása egy változóban így néz ki:
+A C# a matematika világából kölcsönzi az operátorszimbólumokat. Például a __2__ és a __3__ összeadása és az eredmény tárolása egy változóban így néz ki:
 
 ```csharp
 int a = 2 + 3;
@@ -52,7 +52,7 @@ int b = 3 + 1;
 b = 1 + 2;
 ```
 
-Az operátoroknak nincs szükségük szó szerinti értékekre bármilyen kifejezést használhatnak. Az alábbi kód például összetettebb kifejezéseket használ, amelyek változókat tartalmaznak:
+Az operátoroknak nincs szükségük szó szerinti értékekre bármilyen kifejezést használhatunk. Az alábbi kód például összetettebb kifejezéseket használ, amelyek változókat tartalmaznak:
 
 ```csharp
 int a = 1;
@@ -70,7 +70,7 @@ float slicesPerPie = 8
 float totalSlices = totalPies * slicesPerPie;
 ```
 
-Az osztást az előre perjel (__/__) szimbólum használjuk:
+Az osztást az előre perjel (__/__) szimbólummal használjuk:
 
 
 ```csharp
@@ -89,7 +89,7 @@ Eddig a matematikai kifejezéseink csak egyetlen operátort tartalmaztak egyszer
 int result = 2 + 5 * 2;
 ```
 
-A cél az, hogy megértsük melyik művelet hajtódik végre először. Ha az összeadást végezzük el először, a result _14_. Ha pedig a szorzást végezzük el, a result _12_.
+A cél az, hogy megértsük melyik művelet hajtódik végre először. Ha az összeadást végezzük el először, a `result` _14_. Ha pedig a szorzást végezzük el, a `result` _12_.
 
 Van egy szabályrendszer arra, hogy melyik operátorokat értékelik ki először a fordító. Ez a szabályrendszer az __operátorok sorrendje__. Szerencsére a C# követi a szokásos matematikai műveleti sorrendet, így természetesnek tűnik, ha ismered a matematikai műveleti sorrendet.
 
@@ -99,7 +99,7 @@ Most annyi elég, hogy az alábbi két szabály érvényes:
 - A szorzás és osztás először történik, balról jobbra.
 - Az összeadás és kivonás utoljára történik, balról jobbra.
 
-Ezen szabályoknak köszönhetően tudhatjuk, hogy az __2 + 5 * 2__ kifejezésben először a szorzás történik, átalakítva azt __2 + 10__-é, majd az összeadás következik, a végeredmény pedig __12__, amelyet az eredmény változóban tárolunk.
+Ezen szabályoknak köszönhetően tudhatjuk, hogy az __2 + 5 * 2__ kifejezésben először a szorzás történik, átalakítva azt __2 + 10__-é, majd az összeadás következik, a végeredmény pedig __12__, amelyet a `result` változóban tárolunk.
 
 Ha felül szeretnénk írni a műveleti sorrendet, két lehetőségünk  van rá. Az első az, hogy a végrehajtandó részt külön szedjük:
 
@@ -108,13 +108,13 @@ int result1 = 2 + 5;
 int result2 = result1 * 2;
 ```
 
-A másik lehetőség pedig a zárójelek használata. A zárójelek egy al-kifejezést hoznak létre, amelyet először értékel ki:
+A másik lehetőség pedig a zárójelek használata. A zárójelek egy al-kifejezést hoznak létre:
 
 ```csharp
 int result = (2 + 5) * 2;
 ```
 
-A zárójelek kényszerítik a számítógépet arra, hogy először végezze el a __2 + 5__ összeadást a szorzás előtt. A matematika világában is használják ezt a trükköt.
+A zárójelek kényszerítik a számítógépet arra, hogy először végezze el a __2 + 5__ összeadást a szorzás előtt - _matematika világában is használják ezt_.
 
 A matematikai világban a szögletes zárójelek ([ és ]) és kapcsos zárójelek ({ és }) néha "erősebb" csoportosítási szimbólumként szolgálnak. A C# ezeket a szimbólumokat más célokra használja, ezért ehelyett egymásba ágyazott több zárójelet használunk:
 
@@ -137,7 +137,7 @@ double areaOfTrapezoid = (side1 + side2) / 2.0 * height;
 ```
 
 
-A zárójeleket először kiértékeljük, ezért először az __side1 + side2__ kifejezéseket oldjuk meg.A programunk lekérdezi az egyes változók értékeit, majd elvégzi az összeadást. Ezen a ponton a teljes kifejezést így lehet elképzelni: 
+Zárójeleket  ki kell értékeljük, ezért először a __side1 + side2__-t oldjuk meg. A programunk lekérdezi az egyes változók értékeit, majd elvégzi az összeadást. Ezen a ponton a teljes kifejezést így lehet elképzelni: 
 
 __8.0 / 2.0 * height__ 
 
@@ -145,28 +145,26 @@ Az osztásnak és a szorzásnak ugyanaz az elsőbbsége, tehát előbb osztunk, 
 
 A __8.0 / 2.0__ az __4.0__ és a kifejezésünk  __4.0 * height__. 
 
-Már csak a szorzás az egyetlen művelet, amivel foglalkoznunk kell, ezért úgy hajtjuk végre, hogy a magasságban lévő értéket lekérdezzük (__1.5__) és megszorozzuk, így a végeredmény __6.0__ lesz. Ezt az értéket helyezzük az __areaOfTrapezoid__ változóba.
+Már csak a szorzás az egyetlen művelet, amivel foglalkoznunk kell, ezért úgy hajtjuk végre, hogy az értéket lekérdezzük (__1.5__) és megszorozzuk, így a végeredmény __6.0__ lesz. Ezt az értéket helyezzük az __areaOfTrapezoid__ változóba.
 
 ## Különböző szám értékek
 
-Az 11 numerikus típus - nyolc egész típus és három lebegőpontos típus - mindegyike definiál néhány különleges értéket, amelyek hasznosak lehetnek számunkra.
-
-A 11 típus mindegyike meghatározza a `MinValue` és a `MaxValue` értékeket, ami a _legkisebb_ és _legnagyobb_ érték, amelyet helyesen képesek reprezentálni. Ezek lényegében változóként vannak definiálva és a típus nevén keresztül érheted el őket. 
+A 11 numerikus típus - _nyolc egész típus és három lebegőpontos típus_ - mindegyike definiál néhány különleges értéket, amelyek hasznosak lehetnek számunkra. Képesek reprezentálni a `MinValue` és a `MaxValue` értékeket - ami a _legkisebb_ és _legnagyobb_ érték. Ezek lényegében változóként vannak definiálva és a típus nevén keresztül érhetjük el őket. 
 
 ```csharp
 int aBigNumber = int.MaxValue;
 short aBigNegativeNumber = short.MinValue;
 ```
 
-A `double` és `float` típusok definiálnak egy értéket a pozitív és negatív végtelen számára, amit `PositiveInfinity` és `NegativeInfinity`-nak hívnak:
+A `double` és `float` típusok definiálnak egy értéket a _pozitív és negatív_ végtelen számára, amit `PositiveInfinity` és `NegativeInfinity`-nek hívnak:
 
 ```csharp
 double infinity = double.PositiveInfinity;
 ```
 
-Sok számítógép az __∞__ szimbólumot használja a végtelen numerikus érték reprezentálására.
+Sok számítógép a __∞__ szimbólumot használja a végtelen numerikus érték reprezentálására.
 
-A `double` és `float` típusok továbbá definiálnak egy furcsa értéket, amit __NaN__-nek, vagyis "__nem szám__"-nak hívnak. A __NaN__-t akkor kapunk, ha egy számítás eredménye egy lehetetlen értéket eredményez, például nullával való osztás esetén.
+A `double` és `float` típusok továbbá definiálnak egy furcsa értéket, amit __NaN__-nak, vagyis "__nem szám__"-nak hívnak. A __NaN__-t akkor kapunk, ha egy számítás eredménye egy lehetetlen értéket eredményez, például nullával való osztás esetén.
 
 ```csharp
 double notAnyRealNumber = double.NaN;
@@ -174,7 +172,7 @@ double notAnyRealNumber = double.NaN;
 
 ## Egész számos osztás vs Lebegőpontos osztás
 
-Próbáld ki ezt a programot és nézd meg, hogy a megjelenített eredmény az-e, amit vártál:
+Próbáljuk ki ezt a programot és nézzük meg, hogy a megjelenített eredmény az-e, amit vártunk:
 
 ```csharp
 int a = 5;
@@ -183,19 +181,17 @@ int result = a / b;
 Console.WriteLine(result);
 ```
 
-A számítógépen két megközelítés létezik az osztásra. Matematikailag az __5/2 = 2.5__. Ha `a`, `b` és az eredmény is lebegőpontos típusok lennének, akkor ez történt volna. Ezt az osztási stílust lebegőpontos osztásnak nevezik, mert ez az, amit lebegőpontos típusokkal kapsz.
+A számítógépen két megközelítés létezik az osztásra:
 
-A másik lehetőség az egész számok osztása. Amikor bármelyik egész típussal osztasz, az eredmény törtrészének a bitjei eldobásra kerülnek. Még a __9/10__ is, ami matematikailag _0.9_, egyszerűen __0__ lesz. A fenti kód csak egészeket használ, így egész számos osztást alkalmaz. A __5/2__ így _2.5_ helyett __2__ lesz és ezt helyezzük az eredménybe.
+1. Matematikailag az __5/2 = 2.5__. Ha `a`, `b` lebegőpontos típusok lennének, akkor ez történt volna. Ezt lebegőpontos osztásnak nevezzük.
+2. Az egész számok osztásakor az eredmény törtrészének a bitjei eldobásra kerülnek. Még a __9/10__ is, ami matematikailag _0.9_, egyszerűen __0__ lesz. A fenti kód csak egészeket használ, így egész számos osztást alkalmaz. A __5/2__ így _2.5_ helyett __2__ lesz.
 
 
 ## Nullával való osztás
 
-A matematikában a nullával való osztás nincs definiálva - ez egy értelmetlen művelet, amelynek nincs meghatározott eredménye. 
+A matematikában a nullával való osztás nincs definiálva - ez egy értelmetlen művelet, amelynek nincs meghatározott eredménye. Ha egész típusokkat osztunk nullával, a programunk összeomlik. Ha lebegőpontos típusokkat osztunk nullával, nem kapjuk ugyanazt a fajta programösszeomlást. 
 
-- Ha egész típusokkat osztunk nullával, a programunk összeomlik.
-- Ha lebegőpontos típusokkat osztunk nullával, nem kapjuk ugyanazt a fajta programösszeomlást. 
-
-Mivel a program azt feltételezi, hogy valójában egy lehetetlenül kicsi, de nem nulla számmal akartál osztani és az eredmény pozitív végtelen, negatív végtelen vagy NaN lesz attól függően, hogy a számláló pozitív szám, negatív szám, vagy nulla volt-e. 
+Mivel a program azt feltételezi, hogy valójában egy lehetetlenül kicsi, de nem nulla számmal akartunk osztani és az eredmény pozitív végtelen, negatív végtelen vagy __NaN__ lesz attól függően, hogy a számláló pozitív szám, negatív szám, vagy nulla volt-e. 
 
 :::info A matematikai műveletek végtelenekkel és NaN-ekkel mindig végteleneket és NaN-eket eredményeznek, így meg kell védenünk magunkat a nullával való osztástól amikor csak lehet.
 :::
@@ -235,7 +231,7 @@ int leftOverApples = 23 % 3;
 A maradék operátor elsőre talán nem tűnik hasznosnak, de nagyon hasznos lehet. Az egyik leggyakoribb felhasználási módja annak eldöntése, hogy egy szám egy másik szám többszöröse-e. Ha igen, akkor a maradék 0. Nézzük meg ezt a kódot:
 
 ```csharp
-int remainder = n % 2; // Ha ez 0, akkor 'n' páros szám.
+int remainder = n % 2;
 ```
 
 Ha a maradék 0, akkor a szám osztható kettővel, ami azt is jelenti, hogy páros szám. A maradék operátornak ugyanaz az precedencia sorrendje, mint a szorzásnak és az osztásnak.
@@ -248,26 +244,26 @@ Gyakori, hogy a változók idővel új értékekkel frissülnek. Az is gyakori, 
 
 ```csharp
 int a = 5;
-a = a + 1; // the variable a will have a value of 6 after running this line.
+a = a + 1;
 ```
 
 A második sor az `a`-t _1_-gyel növeli, függetlenül attól, hogy mi volt benne korábban.
 
-A fenti kód meg mutatja, hogy a hozzárendelés hogyan különbözik az egyenlőség matematikai elképzelésétől. A matematika világában az `a = a + 1` abszurditás. Nem létezik olyan szám, amely eggyel többel egyenlő önmagánál. A C# kódban azonban gyakoriak az olyan utasítások, amelyek egy változót az aktuális értéke alapján frissítenek. Számos rövidítés létezik erre.A `a = a + 1;` helyett ezt tehetnénk helyette:
+A fenti kód megmutatja, hogy a hozzárendelés hogyan különbözik az egyenlőség matematikai elképzelésétől. A matematika világában az `a = a + 1` abszurditás. Nem létezik olyan szám, amely eggyel többel egyenlő önmagánál. A C# kódban azonban gyakoriak az olyan utasítások, amelyek egy változót az aktuális értéke alapján frissítenek. Számos rövidítés létezik erre. A `a = a + 1;` helyett ezt tehetnénk helyette:
 
 ```csharp
 a += 1;
 ```
 
-Ez a kód pontosan megegyezik az `a = a + 1;` kóddal, csak rövidebb. A `+=` operátort összetett hozzárendelési operátornak nevezzük, mert egy műveletet (ebben az esetben az összeadást) kombinál egy változó hozzárendelésével. Az eddig látott bináris operátorok mindegyikéhez létezik összetett hozzárendelési operátor, beleértve a `+=`, `-=`, `*=`, `/=` és `%=` operátorokat:
+Ez a kód pontosan megegyezik az `a = a + 1;` kóddal, csak rövidebb. A `+=` operátort összetett hozzárendelési operátornak nevezzük, mert egy műveletet (_ebben az esetben az összeadást_) kombinál egy változó hozzárendelésével. Az eddig látott bináris operátorok mindegyikéhez létezik összetett hozzárendelési operátor, beleértve a `+=`, `-=`, `*=`, `/=` és `%=` operátorokat:
 
 ```csharp
 int a = 0;
-a += 5; // The equivalent of a = a + 5; (a is 5 after this line runs.)
-a -= 2; // The equivalent of a = a – 2; (a is 3 after this line runs.)
-a *= 4; // The equivalent of a = a * 4; (a is 12 after this line runs.)
-a /= 2; // The equivalent of a = a / 2; (a is 6 after this line runs.)
-a %= 2; // The equivalent of a = a % 2; (a is 0 after this line runs.) 
+a += 5; 
+a -= 2; 
+a *= 4; 
+a /= 2; 
+a %= 2; 
 ```
 
 ## Inkrementálás és dekrementálás operátorok
@@ -275,14 +271,19 @@ a %= 2; // The equivalent of a = a % 2; (a is 0 after this line runs.)
 
 Ha egy változóhoz egyet adunk hozzá, azt a változó inkrementálásának, ha pedig kiveszünk belőle egyet, azt a változó dekrementálásának nevezzük. Ez a két szó a növelés és a csökkentés szavakból származnak. A változót egy értékkel felfelé vagy lefelé mozgatják.
 
-A növelés és csökkentés olyannyira gyakori, hogy specifikus operátorok léteznek hozzájuk ilyen az inkrementáló operátor (`++`) és a dekrementáló operátor (`--`). Ezek az operátorok unárisak, csak egyetlen operandust igényelnek a működésükhöz, de annak egy változó kell lennie és nem egy kifejezésnek. 
+A növelés és csökkentés olyannyira gyakori, hogy léteznek operátorok hozzájuk:
+
+- ilyen az inkrementáló operátor (`++`) 
+- és a dekrementáló operátor (`--`). 
+
+Ezek az operátorok unárisak, csak egyetlen operandust igényelnek a működésükhöz.
 
 Például:
 
 ```csharp
 int a = 0;
-a++; // The equivalent of a += 1; or a = a + 1; 
-a--; // The equivalent of a -= 1; or a = a - 1;
+a++; 
+a--;
 ```
 
 Hamarosan számos felhasználási lehetőségét fogjuk látni ezeknek az operátoroknak.
@@ -295,14 +296,14 @@ Két kategóriája van a konverzióknak.
 - Az adatvesztéssel járó konverzió. Például egy `long` átalakítása egy `byte` típussá elvesztheti az adatot, ha a szám nagyobb, mint amennyit egy `byte` pontosan képes reprezentálni. 
 - Az adatvesztéssel nem járó konverzió. Például egy `long` mindent képes reprezentálni, amit egy `byte` is, tehát nincs kockázat a konverzió során.
 
-A konverziók lehetnek __explicitek__ vagy __implicitek__. A C#-ban az összes numerikus típus között vannak definiált konverziók. Amikor ez biztonságos, ezek implicit konverziók. Amikor nem az, akkor ezek explicit konverziók. Tekintsük meg ezt a kódot:
+A konverziók lehetnek __explicitek__ vagy __implicitek__. A C#-ban az összes numerikus típus között vannak definiált konverziók. Amikor ez biztonságos, ezek implicit konverziók. Amikor nem az, akkor azok explicit konverziók. Tekintsük meg ezt a kódot:
 
 ```csharp
 byte aByte = 3;
 int anInt = aByte;
 ```
 
-Az `aByte` egyszerű kifejezés típusa byte. Mégis `int`-té kell alakítani, hogy az `anInt` változóban tárolhassuk. A `byte`-ból `int`-be való átalakítás biztonságos, ezért a számítógép automatikusan elvégzi ezt az átalakítást. A fenti kód lefordítható anélkül, hogy bármi különöset kellene tennünk.
+Az `aByte` típusa `byte`. Mégis `int`-té kell alakítani, hogy az `anInt` változóban tárolhassuk. A `byte`-ból `int`-be való átalakítás biztonságos, ezért a számítógép automatikusan elvégzi ezt az átalakítást. A fenti kód lefordítható anélkül, hogy bármi különöset kellene tennünk.
 
 Ha a másik irányba szeretnénk ezt megvalósítani - egy `int`-ből akarunk `byte`-ot -, akkor a konverzió nem biztonságos. A fordításhoz kifejezetten meg kell adnunk, hogy használni akarjuk a konverziót, ismerve az ezzel járó kockázatokat. A konverzió kifejezett kéréséhez az alább látható castolási operátort használjuk:
 
@@ -311,13 +312,13 @@ byte anInt = 3;
 byte aByte = (byte)anInt;
 ```
 
-A konvertálni kívánt típus a kifejezés elé van helyezve zárójelekben. Ez a kód azt mondja: "Tudom, hogy az `anInt` egy `int`, de tudom kezelni annak következményeit, ha ezt `byte`-á alakítjuk, ezért kérlek, konvertáld át".
+A konvertálni kívánt típus a kifejezés elé van helyezve zárójelekben. Ez a kód azt mondja: "_Tudom, hogy az `anInt` egy `int`, de tudom kezelni annak következményeit, ha ezt `byte`-á alakítjuk, ezért kérlek, konvertáld át_".
 
 Azonban a kasztolási átalakítások nincsenek definiálva minden lehetséges típus között. Például ezt nem teheted:
 
 ```csharp
 string text = "0";
-int number = (int)text; // DOES NOT WORK! 
+int number = (int)text;
 ```
 
 Nincs lehetőségünk átalakításra `string` típusról `int` típusra. 
@@ -331,7 +332,7 @@ int amountToDo = 100;
 double fractionDone = amountDone / amountToDo;
 ```
 
-Mivel az `amountDone` és `amountToDo` `int` típusú, az osztás `int` osztásként történik, és az eredmény __0__ lesz. (Az int osztás megszabadul az egész részektől, és _0.2_ egy sima _0_ lesz.) Ez az `int` érték aztán automatikusan átalakul egy `double` típussá (_0.0_). Azonban ez valószínűleg nem az, amit most vártunk. Ha az osztásban részt vevő bármelyik részt `double` típusúvá alakítjuk át, akkor az osztás lebegőpontos osztásként történik:
+Mivel az `amountDone` és `amountToDo` `int` típusú, az osztás `int` osztásként történik és az eredmény __0__ lesz. (Az int osztás megszabadul az egész részektől és _0.2_ egy sima _0_ lesz.) Ez az `int` érték aztán automatikusan átalakul egy `double` típussá (_0.0_). Azonban ez valószínűleg nem az, amit most vártunk. Ha az osztásban részt vevő bármelyik részt `double` típusúvá alakítjuk át, akkor az osztás lebegőpontos osztásként történik:
 
 ```csharp
 int amountDone = 20;
@@ -339,7 +340,7 @@ int amountToDo = 100;
 double fractionDone = (double)amountDone / amountToDo;
 ```
 
-Most a `amountDone` konvertálása `double` típusúvá először megtörténik és az eredmény pedig 0.2. Ebben a pontban az kifejezés már double típusú, tehát nincs szükség további átalakításra a fractionDone értékének hozzárendeléséhez.
+Most a `amountDone` konvertálása `double` típusúvá először megtörténik és az eredmény pedig 0.2. Ebben a pontban az kifejezés már double típusú, tehát nincs szükség további átalakításra.
 
 ## A Math és MathF osztályok
 
@@ -390,5 +391,3 @@ int larger = Math.Max(2, 10);
 ```
 
 Itt a `smaller` változó értéke 2 lesz, míg a `larger` változó értéke 10 lesz.
-
-Ez egy szelet a leggyakrabban használt `Math` osztály metódusaiból, de van még több. Fedezd fel a lehetőségeket, amikor ráérsz, hogy megismerkedj a más lehetőségekkel.
