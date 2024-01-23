@@ -21,8 +21,8 @@ A szoftverfejlesztés egyik lényeges része az adatok tárolása ideiglenes mem
 A számítógép teljes memóriája hatalmas. Még az én régi okostelefonomnak is 3 gigabájt memóriája van - elég nagy ahhoz, hogy 750 millió különböző számot tároljon. Minden memórialokációnak egyedi numerikus memóriacíme van, amelyet fel lehet használni egy adott hely tartalmának elérésére. De nem praktikus megjegyezni, mi található a _#45387_ helyén. Az adatok jönnek és mennek a programban. Lehet, hogy csak egy pillanatra van szükségünk valamire, vagy az egész idő alatt, amíg a program fut. Ráadásul nem minden adat azonos méretű. A `"Hello, World!"` szöveg több helyet foglal el, mint egyetlen szám. Valami egyszerűbbre van szükségünk, mint a nyers memóriacímek.
 
 Ezt a problémát egy változó oldja meg számunkra. A változók olyan elnevezett helyek, ahol az adatokat a memóriában tároljuk. Minden változónak három része van:
-- a neve, 
 - a típusa
+- a neve, 
 - és a tartalma vagy értéke. 
 
 A változó típusa azért fontos, mert ennek segítségével tudjuk meg, hogy hány bájtot kell fenntartani számára a memóriában és a fordítóprogram is így tudja biztosítani, hogy a változó tartalmát helyesen használjuk.

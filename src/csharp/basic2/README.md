@@ -6,4 +6,11 @@ category:
 
 # Az alapok 2. rész
 
-![](/assets/images/vasvari/uc.webp)
+Ebben a részben folytatjuk kalandunkat, és megismerkedünk:
+
+- Bemeneti adatokat használata
+- Döntések meghozatala
+- A kód futtatása ciklusokban
+- Több adatot tartalmazó tömbök készítése
+- Metódusok, az-az kódrészletek újrahasználhatóságának alkalmazása
+- A memória használatának megértése a __C#__ nyelvben
