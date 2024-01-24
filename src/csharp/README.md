@@ -6,4 +6,4 @@ category:
   - C# alapjai
 ---
 
-![](/assets/images/vasvari/uc.webp)
+![](/assets/images/vasvari/csharp.webp)
