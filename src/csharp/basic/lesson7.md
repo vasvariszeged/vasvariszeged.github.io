@@ -308,7 +308,7 @@ Az `aByte` típusa `byte`. Mégis `int`-té kell alakítani, hogy az `anInt` vá
 Ha a másik irányba szeretnénk ezt megvalósítani - egy `int`-ből akarunk `byte`-ot -, akkor a konverzió nem biztonságos. A fordításhoz kifejezetten meg kell adnunk, hogy használni akarjuk a konverziót, ismerve az ezzel járó kockázatokat. A konverzió kifejezett kéréséhez az alább látható castolási operátort használjuk:
 
 ```csharp
-byte anInt = 3;
+int anInt = 3;
 byte aByte = (byte)anInt;
 ```
 

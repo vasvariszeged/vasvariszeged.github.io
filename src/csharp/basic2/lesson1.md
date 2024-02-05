@@ -181,8 +181,9 @@ Ha az én két változóban tárolt nevem _Steve_ és _Captain America_ lenne, a
 #2:      Captain America
 ```
 
-Ez a kód 20 karaktert tart fenn a név megjelenítéséhez. Ha a hossz kevesebb, mint 20, szóközök kerülnek hozzáadásra az elé, hogy elérje a kívánt szélességet.
-Ha azt szeretnénk, hogy a szóközök a szó után legyen, használjunk negatív értéket:
+Ez a kód 20 karaktert tart fenn a név megjelenítéséhez. Ha a hossz kevesebb, mint 20 karakter akkor szóközök kerülnek elé hozzáadásra, hogy elérje a kívánt szélességet.
+
+Ha azt szeretnénk, hogy a szóközök a szó után legyenek, használjunk negatív értéket:
 
 ```csharp
 Console.WriteLine($"{nev1,-20} - 1");
