@@ -14,7 +14,7 @@ icon: fa-solid fa-6
 
 Ahogy egyre több eszközt gyűjtöttünk össze a készletünkbe, úgy bővülnek a programjaink is. El kell kezdenünk megtanulni, hogyan kezdjük el rendszerezni a kódunkat. A C#-nak elég sok eszköze van a kódszervezésre, de az első, amit megtanulunk, az a metódus.
 
-Már eddig is használtunk és hoztunk létre metódusokat. Például használtuk a `Console` osztálynak a `WriteLine` metódusát és a `Convert` osztákynak `ToInt32` metódusát is. Minden általunk készített programnak volt egy `Main` metódusa, amely tartalmatza az általunk írt kódot és a programunk belépési pontja.
+Már eddig is használtunk és hoztunk létre metódusokat. Például használtuk a `Console` osztálynak a `WriteLine` metódusát és a `Convert` osztákynak `ToInt32` metódusát is. Minden általunk készített programnak volt egy `Main` metódusa, amely tartalmazta az általunk írt kódot és a programunk belépési pontja.
 
 Most azt fogjuk megvizsgálni, hogyan készíthetünk további metódusokat és hogyan használhatjuk ezt arra, hogy apró és újrafelhasználható elemekre bontsuk a kódunkat.
 
@@ -33,13 +33,13 @@ static void CountToTen()
 
 A `void CountToTen()` sor, a kapcsos zárójelek és az között, minden ami van egy új metódust határoz meg. Egyelőre koncentráljunk erre a `void CountToTen()` sorra. Ez a sor deklarálja vagy létrehozza a metódust és meghatározza, hogyan kell használni.
 
-`CountToTen` a metódus neve. A változókhoz hasonlóan nagy rugalmassággal rendelkezünk az elnevezésében, de a C# programozók többsége __UpperCamelCase__-t használ minden metódusnévhez.
+`CountToTen` a metódus neve. A változókhoz hasonlóan nagy rugalmassággal rendelkezünk az elnevezésében, de a C# programozók többsége __UpperCamelCase__-t használ minden metódusnevéhez.
 
 A `void` rész, a név előtt, a metódus visszatérési típusa. Ezzel később részletesebben foglalkozunk. Egyelőre csak annyit kell tudnunk, hogy a `void` azt jelenti, hogy a metódus nem ad vissza eredményt.
 
 Minden metódusdeklaráció tartalmaz egy zárójelbe tett információhalmazt, amelyet a metódus használ. A `CountToTen`-nek nincs szüksége semmilyen információra a feladatának elvégzéséhez, ezért egyelőre üresen hagytuk a zárójeleket.
 
-A deklaráció után következik a metódus törzse, amely tartalmazza az összes kódot, amelynek futnia kell, amikor meghívják. Ebben az esetben a törzs a kapcsos zárójelek és az azok közötti összes utasítás. A múltban használt összes kódot - ciklusok, `if`-ek, `Console.WriteLine` hívások stb. - használhatjuk bármelyik általunk létrehozott metódusban.
+A deklaráció után következik a metódus törzse, amely tartalmazza az összes kódot, amelynek futnia kell, amikor meghívjuk. Ebben az esetben a törzs a kapcsos zárójelek és az azok között minden az utasítás. A múltban használt összes kódot - ciklusok, `if`-ek, `Console.WriteLine` hívások stb. - használhatjuk bármelyik általunk létrehozott metódusban.
 
 :::info Helyi függvények 
 A fenti `CountToTen` definíciója a `Program` osztályon belül helyezkedik el. Amikor elkezdünk osztályokat készíteni, szinte minden metódusunk egy osztályban fog elhelyezkedni.
@@ -61,7 +61,7 @@ static void CountToTen()
 
 A legjelentősebb különbség, hogy nem tettünk osztálynevet, ahogy azt a `Console.WriteLine`-nál tettük. Mivel bárhonnan hivatkozhatunk rá a fő metódusban.
 
-Fontos megjegyezni, hogy az, hogy a `CountToTen` definíciója a metódus végén található, nem jelenti azt, hogy akkor hívják meg. Csak egy tényleges metódus hívás indítja el a metódust. Egy definíció önmagában nem elegendő ehhez.
+Fontos megjegyezni, hogy az, hogy a `CountToTen` definíciója a metódus végén található, nem jelenti azt, hogy akkor hívódik meg. Csak egy tényleges metódus hívás indítja el a metódust. Egy definíció önmagában nem elegendő ehhez.
 
 Természetesen többször is hívhatjuk az új metódusunkat. A kód újrafelhasználása az elsődleges ok a metódusok használatára.
 
@@ -76,7 +76,7 @@ static void CountToTen()
 }
 ```
 
-Most már láthatjuk, hogy mennyire hasznosak a metódusok. Egy csomó utasítást össze tudunk csomagolni egy metódusba és elnevezni. Futtathatjuk, amikor szükségünk van rá. Újrahasználhatjuk anélkül, hogy másolnánk és beillesztenénk.
+Most már láthatjuk, hogy mennyire hasznosak a metódusok. Egy csomó utasítást össze tudunk csomagolni egy helyre és el tudjuk nevezni azt. Futtathatjuk, amikor szükségünk van rá. Újrahasználhatjuk anélkül, hogy másolnánk és beillesztenénk.
 
 ### A metódusok saját változókat kapnak
 
@@ -104,7 +104,7 @@ static void CountToTwenty()
 }
 ```
 
-A `CountToTen`, `CountToTwenty` és a `Main` metódus mindegyike rendelkezik egy `current` változóval, de a három változó különbözik egymástól. Mindegyiknek saját memóriahelye van a változónak és nem befolyásolja a többit. Ez a szétválasztás lehetővé teszi, hogy egyszerre csak egy metóduson dolgozzunk anélkül, hogy aggódnánk amiatt, hogy mi történik a többi metódusban. Nem kell egyszerre az egész program működését a fejében tartania.
+A `CountToTen`, `CountToTwenty` és a `Main` metódus mindegyike rendelkezik egy `current` változóval, de a három változó különbözik egymástól. Mindegyiknek saját memóriahelye van a változónak és nem befolyásolja a többit. Ez a szétválasztás lehetővé teszi, hogy egyszerre csak egy metóduson dolgozzunk anélkül, hogy aggódnánk amiatt, hogy mi történik a többi metódusban. Nem kell egyszerre az egész program működését a fejünkben tartani.
 
 ## Adatok átadása a metódusnak
 
@@ -120,7 +120,7 @@ static void Count(int numberToCountTo)
 }
 ```
 
-Ezt a `numberToCountTo` paramétert a metóduson belül használhatjuk, mint bármely más változót. A paramétereket nem kell inicializálnunk a metóduson belül, a hívó metódus inicializálja őket, amikor a metódushívás elkezdődik, úgy, hogy az értékeket (_vagy kiértékelendő kifejezéseket_) zárójelek közé helyezi:
+Ezt a `numberToCountTo` paramétert a metóduson belül használhatjuk, mint bármely más változót. A paramétereket nem kell inicializálnunk a metóduson belül, a hívó metódus inicializálja őket, amikor a metódushívás elkezdődik, úgy, hogy az értékeket (_vagy kiértékelendő kifejezéseket_) zárójelek közé helyezzük:
 
 ```csharp
 Count(10);

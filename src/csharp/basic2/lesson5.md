@@ -207,7 +207,7 @@ for (int index = 0; index < array.Length; index++)
 Console.WriteLine(currentSmallest);
 ```
 
-A következő példa kiszámolja egy tömbben lévő számok átlagértékét. Az átlagérték a tömbben lévő összes elem összege, osztva a tartalmazott elemek számával. Meghatározhatjuk az összes elem összegét a tömbben a futó összeg fenntartásával, kezdve nullával és hozzáadva minden elemet ehhez a futó összeghez, ahogy egy hurokban végigmegyünk rajtuk. Miután ezt befejeztük, az átlagot kiszámoljuk az összeg osztva az elemek számával:
+A következő példa kiszámolja egy tömbben lévő számok átlagértékét. Az átlagérték a tömbben lévő összes elem összege, osztva a tartalmazott elemek számával. Meghatározhatjuk az összes elem összegét a tömbben a futó összeg fenntartásával, kezdve nullával és hozzáadva minden elemet ehhez a futó összeghez, ahogy egy ciklusban végigmegyünk rajtuk. Miután ezt befejeztük, az átlagot kiszámoljuk az összeg osztva az elemek számával:
 
 ```csharp
 int[] array = new int[] { 4, 51, -7, 13, -99, 15, -8, 45, 90 };
@@ -243,3 +243,45 @@ foreach (int score in scores)
 A `foreach` ciklus létrehozásához a `foreach` kulcsszót használod. A zárójelek között egy változót deklarálhatsz, amely mindig sorban tartalmazza a tömb minden elemét. Az `in` kulcsszó választja el a változót a bejárni kívánt tömbtől. A változót a cikluson belül használhatod, ahogyan a fenti példában is látható.
 
 A `foreach` ciklusnak az a hátránya, hogy elveszítjük az információt arról, hogy éppen melyik indexen vagyunk - ez egy `for` ciklusnál a ciklus változójával egyértelmű. Ha mind az elemnek, mind annak indexének hozzáférésre van szükségünk (_például olyan szövegek megjelenítéséhez, mint "Pontszám #3: 82"_), akkor a legjobb választás egy `for` ciklus. A `foreach` ciklus általában könnyebben olvasható, mint a `for` ciklus, de kissé lassabb is. Ha a teljesítmény problémát okoz, érdemes lehet egy problémás `foreach` ciklust átírni egy `for` ciklussá annak felgyorsítása érdekében.
+
+
+## Többdimenziós tömbök
+
+A legtöbb tömb példánk `int` tömbökből állt, de nincsenek korlátok arra vonatkozóan, hogy milyen típusokat használhatunk egy tömbben. Ugyanilyen könnyen használhatunk `double[]`, `bool[]` és `char[]` tömböket is. 
+
+Még tömböket is készíthetünk tömbökből! Képzeljük el például, hogy a következő számmátrixunk van:
+
+```txt
+1 2
+3 4
+5 6
+```
+
+Ezt a struktúrát és annak tartalmát a következő módon ábrázolhatjuk:
+
+```csharp
+int[,] matrix = new int[3, 2] { 
+    { 1, 2 }, 
+    { 3, 4 }, 
+    { 5, 6 } 
+};
+
+Console.WriteLine(matrix[0, 1]);
+```
+
+A többdimenziós tömböknél a szögletes zárójelek közé tett vesszővel jelezzük, hogy egynél több dimenzióval rendelkezik. Új többdimenziós tömb létrehozásakor a méreteit vesszővel elválasztva a szögletes zárójelek közé írhatjuk. Ha konkrét értékekkel akarjuk inicializálni, akkor más szögletes zárójelek között szögletes zárójelekből álló halmazokat használsz. A beállítás nem triviális, de egyszerű.
+
+Ha egy többdimenziós tömb minden elemét meg akarjuk nézni, akkor a `GetLength` metódus lesz a segítségünkre, amelynek meg kell adnunk egy dimenziót (_0-tól számítva, nem 1-től_):
+
+```csharp
+int[,] matrix = new int[4,4];
+
+for (int row = 0; row < matrix.GetLength(0); row++)
+{
+    for (int column = 0; column < matrix.GetLength(1); column++)
+        Console.Write(matrix[row, column] + " ");
+    Console.WriteLine();
+}
+```
+
+

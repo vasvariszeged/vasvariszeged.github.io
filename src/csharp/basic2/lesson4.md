@@ -9,7 +9,8 @@ icon: fa-solid fa-4
 - `while` ciklus
 - `do/while` ciklus
 - `for` ciklus
-- `break` kilép a ciklusból. A `continue` azonnal a következő iterációra ugrik.
+- `break` kilép a ciklusból. 
+- A `continue` azonnal a következő iterációra ugrik.
 :::
 
 Megtanultuk, hogy az utasítások egymás után történő írása azt eredményezi, hogy azok a megadott sorrendben futnak le. Ahogy haladtunk tovább megtanultuk, hogy az `if` és `switch` utasítások alkalmazásával elérhetjük, hogy bizonyos részek kihagyásra kerüljenek valamint több lehetőség közül kiválaszthassuk a szükséges műveletet.
