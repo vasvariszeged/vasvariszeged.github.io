@@ -31,7 +31,9 @@ export default sidebar({
         "lesson4",
         "lesson5",
         "lesson6",
-        "lesson7"
+        "lesson7",
+        "lesson8",
+        "lesson9"
       ],
     },
   ],
@@ -44,7 +46,12 @@ export default sidebar({
   "/database/": [
     {
       text: "",
-      children: [],
+      children: [
+        "lesson1",
+        "lesson2",
+        "lesson3",
+        "lesson4"
+      ],
     },
   ],
   

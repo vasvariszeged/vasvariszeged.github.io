@@ -31,12 +31,12 @@ int[] SubtractOneFromArrayElements(int[] numbers)
 {
     int[] result = new int[numbers.Length];
     for (int index = 0; index < result.Length; index++)
-        result[index] = numbers[index] + 1;
+        result[index] = numbers[index] - 1;
     return result;
 }
 ```
 
-Ez a két módszer azonos, kivéve a kódot, amely az eredeti értékből kiszámítja az új tömb értékét. Létrehozhatnánk mindkét metódust, de ez nem ideális. Ez egy nagy darab duplikált kód lenne. 
+Ez a két metódus azonos, kivéve a kódot, amely az eredeti értékből kiszámítja az új tömb értékét. Létrehozhatnánk mindkét metódust így de ez nem ideális. Ez egy nagy darab duplikált kód lenne. 
 
 Ha hibát kellene javítanunk, azt két helyen kellene megtennünk. Talán hozzáadhatnánk egy másik paramétert, amely jelzi, hogy mennyire változtassuk meg a számot:
 
@@ -50,9 +50,9 @@ int[] ChangeArrayElements(int[] numbers, int amount)
 }
 ```
 
-Az összeadáshoz és kivonáshoz hívhatjuk a `ChangeArrayElements(numbers, +1);` és a `Change ArrayElements(numbers, -1);` parancsokat. De csak ennyi rugalmasságot kaphatunk. Mi lenne, ha egy hasonló metódust szeretnénk, amely minden elemet megduplázna vagy kiszámítaná minden elem négyzetgyökét?
+Az összeadáshoz és kivonáshoz hívhatjuk a `ChangeArrayElements(numbers, +1);` és a `Change ArrayElements(numbers, -1);` parancsokat de csak ennyi rugalmasságot kaphatunk. Mi lenne, ha egy hasonló metódust szeretnénk, amely minden elemet megduplázna vagy kiszámítaná minden elem négyzetgyökét?
 
-A hívó metódusnak a lehető legnagyobb rugalmasságot biztosítsuk, megkérhetjük, hogy egy konkrét szám hozzáadása helyett kérjen egy használandó metódust.
+A metódusnak a lehető legnagyobb rugalmasságot biztosítjuk, megkérhetjük, hogy egy konkrét szám hozzáadása helyett kérjen egy használandó metódust.
 
 Ezt könnyebb egy példával szemléltetni. Kezdjük az `AddOne`, `SubtractOne` és `Double` metódusok definiálásával:
 
@@ -98,7 +98,7 @@ int[] ChangeArrayElements(int[] numbers, NumberDelegate operation)
 
 Nézzük meg, hogyan használja a `ChangeArrayElements` ezt a `delegate` típusú változót.
 
-```csharp
+```csharp{5}
 int[] ChangeArrayElements(int[] numbers, NumberDelegate operation)
 {
     int[] result = new int[numbers.Length];

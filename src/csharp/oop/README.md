@@ -1,9 +1,9 @@
 ---
-icon: fa-solid fa-dragon
+icon: fa-solid fa-hat-wizard
 category:
   - C#
 ---
 
-# Objektumorientált programozás
+# Objektumorientált programozás I.
 
 ![](/assets/images/vasvari/uc.webp)
