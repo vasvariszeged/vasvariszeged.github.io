@@ -42,17 +42,17 @@ Ez önmagában egy működő programot hoz létre, még akkor is, ha nem tesz me
 __Pontosan hol jön létre ez a fájl?__ A `WriteAllText` - és a `File` osztály minden olyan metódusa, amely elérési utat kér - abszolút és relatív elérési utakkal egyaránt képes dolgozni. Az abszolút elérési út leírja a teljes könyvtárszerkezetet a root-tól (gyökértől) a fájlig. Például így írhatunk az asztalunkon lévő fájlba:
 
 ```csharp
-File.WriteAllText("C:/Users/RB/Desktop/Message.txt", message);
+File.WriteAllText("C:/Users/rob/Desktop/message.txt", message);
 ```
 
 Ha meg akarjuk nyitni ezt a fájlt és megjeleníteni az utolsó üzenetet akkor tegyük ezt:
 
 ```csharp
-string previous = File.ReadAllText("Message.txt");
+string previous = File.ReadAllText("message.txt");
 Console.WriteLine("Last time, you said this: " + previous);
 Console.Write("What do you want me to tell you next time? ");
 string message = Console.ReadLine();
-File.WriteAllText("Message.txt", message);
+File.WriteAllText("message.txt", message);
 ```
 
 A `ReadAllText` megnyitja a megadott fájlt és beolvassa a benne lévő szöveget, majd egy karakterláncot ad vissza. A fenti kód ezt megjeleníti a konzolablakban.
@@ -64,7 +64,7 @@ Ellenőrizzük, hogy létezik-e a fájl, mielőtt megpróbáljuk megnyitni:
 ```csharp
 if (File.Exists("message.txt"))
 {
-string previous = File.ReadAllText("Message.txt");
+string previous = File.ReadAllText("message.txt");
     Console.WriteLine("Last time, you said this: " + previous);
 }
 ```
