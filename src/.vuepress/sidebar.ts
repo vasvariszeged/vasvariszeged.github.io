@@ -40,7 +40,12 @@ export default sidebar({
   "/csharp/oop": [
     {
       text: "",
-      children: [],
+      children: [
+        "lesson1",
+        "lesson2",
+        "lesson3",
+        "lesson4"
+      ],
     },
   ],
   "/database/": [

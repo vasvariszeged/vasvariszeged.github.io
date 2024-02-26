@@ -14,8 +14,8 @@ icon: fa-solid fa-1
     - és lejátszhatunk retro hangjelzéseket (`Beep`).
 
 - Az `escape` karakterek a `\` karakterrel kezdődnek és azután mondják meg a számítógépnek, hogy a következő karaktert másképp értelmezze. A `\n` egy új sor, a `\t` egy tabulátor, `\"` egy idézőjel egy karakterláncban.
-- A `@` karakterlánc előtt figyelmen kívül hagy minden lehetséges `escape` szekvenciát: `@"C:\Users\Me\File.txt"`.
-- A `$` karakterlánc előtt azt jelenti, hogy a kapcsos zárójelek kódot tartalmaznak: `$"a:{a} sum:{a+b}"`.
+- A `@` karakterlánc után figyelmen kívül hagy minden lehetséges `escape` szekvenciát: `@"C:\Users\Me\File.txt"`.
+- A `$` karakterlánc előtte azt jelenti, hogy a kapcsos zárójelek kódot tartalmaznak: `$"a:{a} sum:{a+b}"`.
 :::
 
 Elmélyítjük a konzollal kapcsolatos ismereteinket és megtanulunk néhány dolgot, amelyekkel könnyebbé tehetjük a szöveggel és a konzolablakkal való munkát. Bár a konzolablak nem olyan mutatós, mint egy __GUI__ vagy egy __weboldal__ de attól nem kell, hogy unalmas legyen.
