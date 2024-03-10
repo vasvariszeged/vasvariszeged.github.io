@@ -50,7 +50,7 @@ A `new` kulcsszó alkalmazása a programunkban új elemeket hoz létre. A fenti 
 
 Ezt a tömböt bármekkora méretűvé tehettük volna, de ha egyszer egy létrehoztunk, akkor annak méretét már nem változtathatjuk meg. Nem tudjuk bővíteni vagy kicsinyíteni. A `scores` tartalmát nem lehet átméretezni. 
 
-Azonban a `new` használatával létrehozhatunk egy második tömböt, több (_vagy kevesebb_) elemmel. Ezzel az új, hosszabb tömbtel frissíthetjük a pontszámokat:
+Azonban a `new` használatával létrehozhatunk egy második tömböt, több (_vagy kevesebb_) elemmel. Ezzel az új, hosszabb tömbbel frissíthetjük a pontszámokat:
 
 ```csharp
 scores = new int[20];
@@ -150,7 +150,7 @@ A for ciklusokat gyakran használják tömbökkel. A fenti séma tipikus és ér
 
 ### Indexelés a végéről
 
-Előfordul, hogy az elemeket a tömb végétől kívánjuk elérni, nem pedig az elejétől. Ezt a `^` operátorral érheted el. Az alábbi kód a `scores` tömb utolsó elemét szerezi be:
+Előfordul, hogy az elemeket a tömb végétől kívánjuk elérni, nem pedig az elejétől. Ezt a `^` operátorral érheted el. Az alábbi kód a `scores` tömb utolsó elemét adja vissza:
 
 ```csharp
 int lastScore = scores[^1];
@@ -178,7 +178,7 @@ Bár a `new int[10]` megközelítés egy gyakori módja az új tömbök létreho
 int[] scores = new int[10] { 100, 95, 92, 87, 55, 50, 48, 40, 35, 10 };
 ```
 
-Minden értéket vesszővel elválasztva és szögletes zárójelek közé zárva sorolunk fel. Ezt a sémát nevezzük __gyűjtemény inicializáló szintaxis__-nak. A felsorolt elemek számának és hosszának meg kell egyeznie egymással, de ha az összes elemet felsoroljuk, akkor a hossz megadása eleve kihagyható:
+Minden értéket vesszővel elválasztva és kapcsos zárójelek közé zárva sorolunk fel. Ezt a sémát nevezzük __gyűjtemény inicializáló szintaxis__-nak. A felsorolt elemek számának és hosszának meg kell egyeznie egymással, de ha az összes elemet felsoroljuk, akkor a hossz megadása eleve kihagyható:
 
 ```csharp
 int[] scores = new int[] { 100, 95, 92, 87, 55, 50, 48, 40, 35, 10 };

@@ -15,7 +15,7 @@ Nézzük meg, milyen típusú problémákat segítenek megoldani. Tegyük fel, h
 
 
 ```csharp
-int[] AddOneToArrayElements(int[] numbers)
+static int[] AddOneToArrayElements(int[] numbers)
 {
     int[] result = new int[numbers.Length];
     for (int index = 0; index < result.Length; index++)
@@ -27,7 +27,7 @@ int[] AddOneToArrayElements(int[] numbers)
 Mi van akkor, ha szükségünk van egy olyan metódusra is, amely helyettünk kivon egyet? Nem nagy ügy:
 
 ```csharp
-int[] SubtractOneFromArrayElements(int[] numbers)
+static int[] SubtractOneFromArrayElements(int[] numbers)
 {
     int[] result = new int[numbers.Length];
     for (int index = 0; index < result.Length; index++)
@@ -41,7 +41,7 @@ Ez a két metódus azonos, kivéve a kódot, amely az eredeti értékből kiszá
 Ha hibát kellene javítanunk, azt két helyen kellene megtennünk. Talán hozzáadhatnánk egy másik paramétert, amely jelzi, hogy mennyire változtassuk meg a számot:
 
 ```csharp{1,5}
-int[] ChangeArrayElements(int[] numbers, int amount)
+static int[] ChangeArrayElements(int[] numbers, int amount)
 {
     int[] result = new int[numbers.Length];
     for (int index = 0; index < result.Length; index++)
@@ -58,17 +58,17 @@ Ezt könnyebb egy példával szemléltetni. Kezdjük az `AddOne`, `SubtractOne` 
 
 
 ```csharp
-int AddOne(int number) 
+static int AddOne(int number) 
 {
     return number + 1;
 } 
 
-int SubtractOne(int number) 
+static int SubtractOne(int number) 
 {
     return number - 1;
 } 
 
-int Double(int number) 
+static int Double(int number) 
 {
     return number * 2;
 }
@@ -90,7 +90,7 @@ A `delegate` típusokat használó változók tárolhatnak metódusokat. A metó
 Készíthetünk egy metódust egy olyan paraméterrel, amelynek típusa `NumberDelegate`, ami lehetővé teszi a metódus hívás számára, hogy egy másik metódust adjunk meg:
 
 ```csharp
-int[] ChangeArrayElements(int[] numbers, NumberDelegate operation) 
+static int[] ChangeArrayElements(int[] numbers, NumberDelegate operation) 
 {  
     // ...
 }
@@ -99,7 +99,7 @@ int[] ChangeArrayElements(int[] numbers, NumberDelegate operation)
 Nézzük meg, hogyan használja a `ChangeArrayElements` ezt a `delegate` típusú változót.
 
 ```csharp{5}
-int[] ChangeArrayElements(int[] numbers, NumberDelegate operation)
+static int[] ChangeArrayElements(int[] numbers, NumberDelegate operation)
 {
     int[] result = new int[numbers.Length];
     for (int index = 0; index < result.Length; index++)

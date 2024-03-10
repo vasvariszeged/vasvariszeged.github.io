@@ -169,6 +169,6 @@ Lehetőségünk van egész számok és enumerációk között is átalakítani:
 
 ```csharp
 int number = (int) Season.Fall; 
-Season now = 2;
+Season now = (Season) 2;
 ```
 

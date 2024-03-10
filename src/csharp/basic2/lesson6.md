@@ -160,7 +160,7 @@ string input = Console.ReadLine();
 int number = Convert.ToInt32(input);
 ```
 
-Ahhoz, hogy egy metódus visszaadjon egy értéket, két dolgot kell tennünk. Először is meg kell adnunk a az adattípusátt, másodszor pedig meg kell adnunk, hogy milyen váltózót adjon vissza:
+Ahhoz, hogy egy metódus visszaadjon egy értéket, két dolgot kell tennünk. Először is meg kell adnunk az adattípusát, másodszor pedig meg kell adnunk, hogy milyen váltózót adjon vissza:
 
 ```csharp
 static int ReadNumber()
@@ -194,7 +194,7 @@ static int ReadNumber()
 
 ### Adatok korai visszaadása
 
-Egy `return` utasítás egy metódus utolsó sorában gyakori, de egy `return` utasítás bárhol előfordulhat egy metódusban. A metódus utolsó sora előtti visszatérést korai "_visszatérésnek_" vagy korai kilépésnek nevezzük. A korai visszatérés különösen gyakori, ha ciklusokat és elágazásokat használunk a kódodunkban. Az alábbi metódus ismételten kérni fog egy nevet, amíg a felhasználó nem ír be valamilyen tényleges szöveget a puszta _Enter_ leütése helyett:
+Egy `return` utasítás egy metódus utolsó sorában gyakori, de egy `return` utasítás bárhol előfordulhat egy metódusban. A metódus utolsó sora előtti visszatérést korai "_visszatérésnek_" vagy korai kilépésnek nevezzük. A korai visszatérés különösen gyakori, ha ciklusokat és elágazásokat használunk a kódunkban. Az alábbi metódus ismételten kérni fog egy nevet, amíg a felhasználó nem ír be valamilyen tényleges szöveget a puszta _Enter_ leütése helyett:
 
 ```csharp
 static string GetUserName()
