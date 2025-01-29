@@ -1,0 +1,42 @@
+import{_ as e}from"./plugin-vue_export-helper-c27b6911.js";import{o as a,c as d,d as s}from"./app-8616d07c.js";const t={},i=s(`<h1 id="gyakorlo-i" tabindex="-1"><a class="header-anchor" href="#gyakorlo-i" aria-hidden="true">#</a> Gyakorló I.</h1><p>Alap gyakorló feladatok</p><h2 id="_1-feladat" tabindex="-1"><a class="header-anchor" href="#_1-feladat" aria-hidden="true">#</a> 1. feladat</h2><p>Írj egy C# programot, amely kiírja a következő szöveget két külön sorban:</p><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>Helló
+Péter Kovács
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-feladat" tabindex="-1"><a class="header-anchor" href="#_2-feladat" aria-hidden="true">#</a> 2. feladat</h2><p>Írj egy C# programot, amely kiírja két szám összegét.</p><h2 id="_3-feladat" tabindex="-1"><a class="header-anchor" href="#_3-feladat" aria-hidden="true">#</a> 3. feladat</h2><p>Írj egy C# programot, amely kiírja két szám osztásának eredményét.</p><h2 id="_4-feladat" tabindex="-1"><a class="header-anchor" href="#_4-feladat" aria-hidden="true">#</a> 4. feladat</h2><p>Írj egy C# programot, amely kiírja az alábbi műveletek eredményeit:</p><ul><li><code>-1 + 4 * 6</code></li><li><code>(35 + 5) % 7</code></li><li><code>14 + -4 * 6 / 11</code></li><li><code>2 + 15 / 6 * 1 - 7 % 2</code></li></ul><h2 id="_5-feladat" tabindex="-1"><a class="header-anchor" href="#_5-feladat" aria-hidden="true">#</a> 5. feladat</h2><p>Írj egy C# programot, amely két számot cserél.</p><p><strong>Tesztadatok:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>Első szám bevitele: 5
+Második szám bevitele: 6
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>Várt kimenet:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>Csere után:
+Első szám: 6
+Második szám: 5
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_6-feladat" tabindex="-1"><a class="header-anchor" href="#_6-feladat" aria-hidden="true">#</a> 6. feladat</h2><p>Írj egy C# programot, amely kiírja három, a felhasználó által megadott szám szorzatának eredményét.</p><p><strong>Tesztadatok:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>Első szám bevitele a szorzáshoz: 2  
+Második szám bevitele a szorzáshoz: 3  
+Harmadik szám bevitele a szorzáshoz: 6
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>Várt kimenet:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>2 x 3 x 6 = 36
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="_7-feladat" tabindex="-1"><a class="header-anchor" href="#_7-feladat" aria-hidden="true">#</a> 7. feladat</h2><p>Írj egy C# programot, amely kiírja a képernyőre két, a felhasználó által megadott szám összeadásának, kivonásának, szorzásának és osztásának eredményét.</p><p><strong>Tesztadatok:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>Első szám bevitele: 25
+Második szám bevitele: 4
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>Várt kimenet:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>25 + 4 = 29
+25 - 4 = 21
+25 x 4 = 100
+25 / 4 = 6
+25 mod 4 = 1
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_8-feladat" tabindex="-1"><a class="header-anchor" href="#_8-feladat" aria-hidden="true">#</a> 8. feladat</h2><p>Írj egy C# programot, amely kiírja egy szám szorzótábláját, amit a felhasználó ad meg.</p><p><strong>Tesztadatok:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>Adj meg egy számot: 5  
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>Várt kimenet:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>5 * 0 = 0  
+5 * 1 = 5  
+5 * 2 = 10  
+5 * 3 = 15  
+....  
+5 * 10 = 50
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_9-feladat" tabindex="-1"><a class="header-anchor" href="#_9-feladat" aria-hidden="true">#</a> 9. feladat</h2><p>Írj egy C# programot, amely négy számot vesz fel bemenetként, hogy kiszámolja és kiírja az átlagot.</p><p><strong>Tesztadatok:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>Adj meg az első számot: 10
+Adj meg a második számot: 15
+Adj meg a harmadik számot: 20
+Adj meg a negyedik számot: 30
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>Várt kimenet:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>A 10, 15, 20, 30 számok átlaga: 18
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="_10-feladat" tabindex="-1"><a class="header-anchor" href="#_10-feladat" aria-hidden="true">#</a> 10. feladat</h2><p>Írj egy C# programot, amely egy életkort (például 20) vesz fel bemenetként, és valami ilyesmit ír ki: &quot;<em>Idősebbnek tűnsz, mint 20</em>&quot;.</p><p><strong>Tesztadatok:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>Add meg az életkorod: 25 
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>Várt kimenet:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>Idősebbnek tűnsz, mint 25  
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="_11-feladat" tabindex="-1"><a class="header-anchor" href="#_11-feladat" aria-hidden="true">#</a> 11. feladat</h2><p>Írj egy C# programot, amely egy számot vesz fel bemenetként, és azt használva megjelenít egy 3 oszlop széles és 5 sor magas téglalapot.</p><p><strong>Tesztadatok:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>Add meg a számot: 5  
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>Várt kimenet:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>555  
+5 5  
+5 5  
+5 5  
+555
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_12-feladat" tabindex="-1"><a class="header-anchor" href="#_12-feladat" aria-hidden="true">#</a> 12. feladat</h2><p>Írj egy C# programot, amely a Celsius fokokat Kelvinre és Fahrenheit-ra konvertálja.</p><p><strong>Tesztadatok:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>Add meg a Celsius fokot: 30
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>Várt kimenet:</strong></p><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>Kelvin = 303
+Fahrenheit = 86
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div>`,60),n=[i];function l(r,o){return a(),d("div",null,n)}const v=e(t,[["render",l],["__file","lesson8.html.vue"]]);export{v as default};

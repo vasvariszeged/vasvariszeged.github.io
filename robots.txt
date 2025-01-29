@@ -1,0 +1,5 @@
+
+User-agent:*
+Disallow:
+
+Sitemap: https://vasvariszeged.github.io/sitemap.xml

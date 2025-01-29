@@ -1,0 +1,1 @@
+const a=JSON.parse('{"key":"v-2e25198a","path":"/database/","title":"Adatbázis-kezelés","lang":"en-US","frontmatter":{"title":"Adatbázis-kezelés","index":false,"icon":"fa-solid fa-database","category":["SQL alapjai"],"seo":false,"head":[]},"headers":[],"git":{},"readingTime":{"minutes":0.88,"words":263},"filePathRelative":"database/README.md"}');export{a as data};
