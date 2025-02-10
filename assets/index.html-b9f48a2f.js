@@ -1,1 +1,0 @@
-import{_ as t}from"./plugin-vue_export-helper-c27b6911.js";import{o as s,c as a,a as e}from"./app-8616d07c.js";const o="/assets/images/vasvari/csharp.webp",c={},n=e("figure",null,[e("img",{src:o,alt:"",tabindex:"0",loading:"lazy"}),e("figcaption")],-1),i=[n];function r(_,l){return s(),a("div",null,i)}const f=t(c,[["render",r],["__file","index.html.vue"]]);export{f as default};
