@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-6cb14eae","path":"/csharp/oop/","title":"Objektumorientált programozás I.","lang":"en-US","frontmatter":{"icon":"fa-solid fa-hat-wizard","category":["C#"],"seo":false,"head":[]},"headers":[],"git":{},"readingTime":{"minutes":0.23,"words":70},"filePathRelative":"csharp/oop/README.md"}');export{e as data};

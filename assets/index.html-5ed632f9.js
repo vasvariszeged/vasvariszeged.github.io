@@ -1,0 +1,1 @@
+const a=JSON.parse('{"key":"v-33b76508","path":"/csharp/basic2/","title":"Az alapok 2. rész","lang":"en-US","frontmatter":{"icon":"fa-solid fa-wand-sparkles","category":["C#"],"seo":false,"head":[]},"headers":[],"git":{},"readingTime":{"minutes":0.16,"words":47},"filePathRelative":"csharp/basic2/README.md"}');export{a as data};

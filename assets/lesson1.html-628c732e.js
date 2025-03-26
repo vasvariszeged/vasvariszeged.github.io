@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-6509542e","path":"/csharp/oop/lesson1.html","title":"Objektumorientált koncepció","lang":"en-US","frontmatter":{"icon":"fa-solid fa-1","seo":false,"head":[]},"headers":[],"git":{},"readingTime":{"minutes":1.91,"words":574},"filePathRelative":"csharp/oop/lesson1.md"}');export{e as data};
