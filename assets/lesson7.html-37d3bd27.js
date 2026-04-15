@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-3b9ba1b6","path":"/csharp/basic2/lesson7.html","title":"Delegate","lang":"en-US","frontmatter":{"icon":"fa-solid fa-7","seo":false,"head":[]},"headers":[],"git":{},"readingTime":{"minutes":2.42,"words":725},"filePathRelative":"csharp/basic2/lesson7.md"}');export{e as data};
